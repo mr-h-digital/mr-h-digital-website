@@ -1,0 +1,79 @@
+# Node modules (if using Node.js tooling)
+node_modules/
+
+# Dependency directories
+dist/
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VS Code settings
+.vscode/
+
+# Environment files
+.env
+.env.*
+
+# SASS/SCSS cache
+.sass-cache/
+
+# Compiled source #
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Package distribution
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Backup files
+*.bak
+*.tmp
+~$*
+
+# Images cache
+*.png.cache
+*.jpg.cache
+
+# Misc
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Ignore Mac system files
+._*
+
+# Ignore Windows system files
+Desktop.ini
+
+# Ignore IDE files
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore coverage reports
+coverage/
+
+# Ignore npm package lock
+package-lock.json
+yarn.lock
+
+# Ignore generated files
+assets/generated/

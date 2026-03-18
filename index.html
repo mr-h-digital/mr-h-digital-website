@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mr. H Digital | Mobile & Web App Design · Cape Town</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo-mrh-digital.png" />
+  <link rel="apple-touch-icon" href="images/logo-mrh-digital.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="images/logo-mrh-digital.png" alt="Mr. H Digital Logo" style="height:40px;width:auto;background:#15181C;border-radius:4px;" />
+    <span class="logo-text">Mr. H <span>Digital</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk →</a></li>
+  </ul>
+  <button class="hamburger" id="hbg" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="drawer">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#portfolio" onclick="toggleMenu()">Work</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="#contact" class="mob-cta" onclick="toggleMenu()">Let's Talk →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-tag">Available for new projects</div>
+  <h1 class="hero-title">
+    We Build<br>
+    <span class="lime">Digital</span><br>
+    <span class="outline">Experiences.</span>
+  </h1>
+  <p class="hero-sub">
+    Mobile apps, websites, and web platforms for local businesses and startups across South Africa. Built by a real engineer, not a template machine.
+  </p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">Start a Project →</a>
+    <a href="#portfolio" class="btn-outline">See Our Work</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">5+</div>
+      <div class="stat-lbl">Years Experience</div>
+    </div>
+    <div>
+      <div class="stat-num">20+</div>
+      <div class="stat-lbl">Projects Delivered</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-lbl">Custom Builds</div>
+    </div>
+    <div>
+      <div class="stat-num">CPT</div>
+      <div class="stat-lbl">Cape Town Based</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    WEB DESIGN &nbsp;•&nbsp; MOBILE APPS &nbsp;•&nbsp; REACT NATIVE &nbsp;•&nbsp; SPRING BOOT &nbsp;•&nbsp; FULL STACK &nbsp;•&nbsp; CAPE TOWN &nbsp;•&nbsp; LOCAL BUSINESSES &nbsp;•&nbsp; STARTUPS &nbsp;•&nbsp; CUSTOM SOFTWARE &nbsp;•&nbsp; API DEVELOPMENT &nbsp;•&nbsp;
+    WEB DESIGN &nbsp;•&nbsp; MOBILE APPS &nbsp;•&nbsp; REACT NATIVE &nbsp;•&nbsp; SPRING BOOT &nbsp;•&nbsp; FULL STACK &nbsp;•&nbsp; CAPE TOWN &nbsp;•&nbsp; LOCAL BUSINESSES &nbsp;•&nbsp; STARTUPS &nbsp;•&nbsp; CUSTOM SOFTWARE &nbsp;•&nbsp; API DEVELOPMENT &nbsp;•&nbsp;
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="sec-eyebrow fade-up">// What We Do</div>
+  <h2 class="sec-title fade-up">Built for the<br>real world.</h2>
+  <p class="sec-desc fade-up">From a simple business website to a full-scale mobile app — we build what your business actually needs, at a price that makes sense.</p>
+  <div class="services-grid fade-up">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">🌐</div>
+      <div class="service-title">Business Websites</div>
+      <div class="service-desc">Fast, mobile-first websites that look great, rank on Google, and convert visitors into customers. Fully custom — no page builders.</div>
+      <div class="service-tags">
+        <span class="tag">HTML/CSS</span><span class="tag">Responsive</span><span class="tag">SEO</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">📱</div>
+      <div class="service-title">Mobile App Development</div>
+      <div class="service-desc">Cross-platform Android & iOS apps built with React Native. One codebase, two platforms, real performance.</div>
+      <div class="service-tags">
+        <span class="tag">React Native</span><span class="tag">Android</span><span class="tag">iOS</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">⚙️</div>
+      <div class="service-title">Backend & APIs</div>
+      <div class="service-desc">Robust Spring Boot backends, REST APIs, database design, and cloud deployments. Enterprise-grade, startup-friendly pricing.</div>
+      <div class="service-tags">
+        <span class="tag">Spring Boot</span><span class="tag">REST API</span><span class="tag">AWS</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">🛒</div>
+      <div class="service-title">WhatsApp & Order Systems</div>
+      <div class="service-desc">WhatsApp ordering integrations, digital menus, and booking systems for restaurants, food trucks, and service businesses.</div>
+      <div class="service-tags">
+        <span class="tag">WhatsApp API</span><span class="tag">Ordering</span><span class="tag">Menus</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">📊</div>
+      <div class="service-title">Management Systems</div>
+      <div class="service-desc">Custom dashboards, stock management, HR tools, and internal apps that replace messy spreadsheets with something that actually works.</div>
+      <div class="service-tags">
+        <span class="tag">Dashboards</span><span class="tag">CRUD</span><span class="tag">Reports</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">🔧</div>
+      <div class="service-title">Hosting & Maintenance</div>
+      <div class="service-desc">Monthly hosting, updates, backups, and support so your site stays fast, secure, and up-to-date — without you lifting a finger.</div>
+      <div class="service-tags">
+        <span class="tag">Netlify</span><span class="tag">Domain</span><span class="tag">Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-inner">
+    <div class="about-visual fade-up">
+      <div class="about-img-wrap">
+        <img src="images/lee-hildebrandt.jpg" alt="Lee Hildebrandt" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+      </div>
+      <div class="about-badge">
+        <img src="images/mrh-digital-badge.png" alt="Mr. H Digital" style="width:60px;height:auto;display:block;margin:0 auto 10px;border-radius:12px;background:#1E2227;" />
+        Lee Hildebrandt<br>
+        <small style="font-size:11px;opacity:.7;font-weight:400;">Full Stack Engineer</small>
+      </div>
+    </div>
+    <div class="about-text fade-up">
+      <div class="sec-eyebrow">// About Mr. H Digital</div>
+      <h2 class="sec-title">Real engineer.<br>Real results.</h2>
+      <p>I'm Lee Hildebrandt — a full stack software engineer based in Cape Town, South Africa. By day I work on enterprise-scale banking systems. By night (and weekends), I build digital products for local businesses through Mr. H Digital.</p>
+      <p>My mission is simple: give small and medium businesses access to the kind of quality software that was previously only available to big companies with big budgets.</p>
+      <ul class="about-list">
+        <li>5+ years building production software systems</li>
+        <li>Experience from startup to enterprise scale</li>
+        <li>Every project is custom built — no templates</li>
+        <li>Cape Town local — available for in-person meetings</li>
+        <li>Mobile-first, performance-obsessed approach</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="display:inline-flex;margin-top:8px;">Work with me →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section portfolio" id="portfolio">
+  <div class="sec-eyebrow fade-up">// Our Work</div>
+  <h2 class="sec-title fade-up">Built with care.<br>Delivered with pride.</h2>
+  <div class="portfolio-grid fade-up">
+    <div class="portfolio-card featured">
+      <div class="p-thumb">
+        <div class="p-thumb-bg" style="background:var(--darker);">
+          <img src="images/cardys-tacos-logo.png" alt="Cardy's Tacos & Takeaways Logo" style="width:220px;height:220px;object-fit:contain;" />
+        </div>
+        <div class="p-thumb-overlay"></div>
+        <div class="p-label">Live Project</div>
+      </div>
+      <div class="p-body">
+        <div class="p-title">Cardy's Tacos & Takeaways</div>
+        <div class="p-desc">Full custom website for a Blackheath food truck startup. WhatsApp ordering on every menu item, Google Maps integration, mobile-first responsive design, and animated sections — all in a single lightweight HTML file.</div>
+        <div class="p-stack">
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">WhatsApp API</span>
+          <span class="tag">Google Maps</span>
+          <span class="tag">Mobile First</span>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="p-thumb" style="height:200px;background:#0a0a0a;display:flex;align-items:center;justify-content:center;position:relative;">
+        <img src="images/wpc-broadsheet-manager.jpg" alt="WPC Broadsheet Manager" style="width:140px;height:140px;object-fit:contain;border-radius:50%;" />
+        <div class="p-label" style="background:rgba(170,219,30,.15);color:var(--lime);border:1px solid rgba(170,219,30,.3);">In Development</div>
+      </div>
+      <div class="p-body">
+        <div class="p-title">WPC Broadsheet Manager</div>
+        <div class="p-desc">Android + Spring Boot meal management system for welfare and residential facilities. Currently in development.</div>
+        <div class="p-stack">
+          <span class="tag">Android</span><span class="tag">Spring Boot</span><span class="tag">Room DB</span>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="p-thumb" style="height:200px;">
+        <div class="coming-soon">
+          <div class="coming-soon-icon">🚀</div>
+          <div class="coming-soon-text">Next Project<br>Coming Soon</div>
+        </div>
+      </div>
+      <div class="p-body">
+        <div class="p-title">Your Business Here</div>
+        <div class="p-desc">Ready to be the next success story? Let's build something great together.</div>
+        <a href="#contact" class="btn-primary" style="display:inline-flex;font-size:13px;padding:12px 20px;margin-top:8px;">Start a conversation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="sec-eyebrow fade-up">// Transparent Pricing</div>
+  <h2 class="sec-title fade-up">Honest rates for<br>honest work.</h2>
+  <p class="sec-desc fade-up">No hidden fees. No surprises. Just clear pricing designed to work for local South African businesses.</p>
+  <div class="pricing-grid fade-up">
+    <div class="price-card">
+      <div class="price-tier">Starter</div>
+      <div class="price-amount"><small>R</small>800<small style="font-size:14px;"> – R1,500</small></div>
+      <div class="price-note">Once-off build fee</div>
+      <hr class="price-divider" />
+      <ul class="price-features">
+        <li>Custom designed website</li>
+        <li>Mobile responsive</li>
+        <li>Up to 5 sections</li>
+        <li>WhatsApp integration</li>
+        <li>Google Maps embed</li>
+        <li class="muted-feat">Custom domain setup</li>
+        <li class="muted-feat">Monthly maintenance</li>
+      </ul>
+      <a href="#contact" class="btn-price btn-price-outline">Get Started</a>
+    </div>
+    <div class="price-card featured-price">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-tier">Growth</div>
+      <div class="price-amount"><small>R</small>2,500<small style="font-size:14px;"> – R5,000</small></div>
+      <div class="price-note">Once-off + R200–250/mo hosting</div>
+      <hr class="price-divider" />
+      <ul class="price-features">
+        <li>Everything in Starter</li>
+        <li>Full multi-page website</li>
+        <li>Online menu / catalogue</li>
+        <li>Contact & booking forms</li>
+        <li>Custom domain setup</li>
+        <li>Monthly hosting & updates</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="#contact" class="btn-price btn-price-filled">Let's Build →</a>
+    </div>
+    <div class="price-card">
+      <div class="price-tier">Custom</div>
+      <div class="price-amount" style="font-size:36px;">Let's Talk</div>
+      <div class="price-note">Mobile apps & complex systems</div>
+      <hr class="price-divider" />
+      <ul class="price-features">
+        <li>React Native mobile apps</li>
+        <li>Spring Boot backends</li>
+        <li>REST API development</li>
+        <li>Database design</li>
+        <li>Cloud deployment</li>
+        <li>Ongoing retainer available</li>
+        <li>Scoped per project</li>
+      </ul>
+      <a href="#contact" class="btn-price btn-price-outline">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" style="background:var(--darker);">
+  <div class="contact-inner">
+    <div class="contact-info fade-up">
+      <div class="sec-eyebrow">// Get In Touch</div>
+      <h2 class="sec-title">Let's build<br>something great.</h2>
+      <p>Have a project in mind? A business problem that needs a digital solution? Or just want to know if what you're imagining is possible? Send a message — I respond to every enquiry personally.</p>
+      <div class="contact-links">
+        <a href="mailto:info@mrhdigital.co.za" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-val">info@mrhdigital.co.za</div>
+          </div>
+        </a>
+        <a href="tel:+27766871671" class="contact-link">
+          <div class="contact-link-icon">📞</div>
+          <div>
+            <div class="contact-link-label">Phone / WhatsApp</div>
+            <div class="contact-link-val">076 687 1671</div>
+          </div>
+        </a>
+        <a href="https://wa.me/27766871671" target="_blank" class="contact-link">
+          <div class="contact-link-icon">💬</div>
+          <div>
+            <div class="contact-link-label">WhatsApp Direct</div>
+            <div class="contact-link-val">Chat with Lee →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="fade-up">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" name="name" type="text" placeholder="Ricardo Cardy" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone / WhatsApp</label>
+            <input class="form-input" name="phone" type="tel" placeholder="083 123 4567" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" name="email" type="email" placeholder="you@yourbusiness.co.za" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">What do you need?</label>
+          <input class="form-input" name="project" type="text" placeholder="Website, mobile app, ordering system..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell me more</label>
+          <textarea class="form-textarea" name="details" placeholder="Describe your business and what you're looking to build..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-copy">
+      © 2025 <a href="#">Mr. H Digital</a> · Cape Town, South Africa · <a href="mailto:info@mrhdigital.co.za">info@mrhdigital.co.za</a>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Work</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
