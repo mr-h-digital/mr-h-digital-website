@@ -37,6 +37,12 @@ js/
 ## 📦 Dependencies
 This project uses only vanilla HTML, CSS, and JavaScript. No external dependencies are required.
 
+## AudEx product website
+
+The dedicated AudEx (Audit Excellence) product website lives in `audex/` and is linked from the main site's desktop/mobile navigation, portfolio and footer. Publish that directory with the rest of this website to serve it at `https://www.mrhdigital.co.za/audex/`. The application itself remains at `https://audex.mrhdigital.co.za/`.
+
+See `audex/README.md` for preview instructions, content boundaries and maintenance notes.
+
 ## 🖼️ Screenshots
 <!-- Add screenshots or GIFs of your website here -->
 
