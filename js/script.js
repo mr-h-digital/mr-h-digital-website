@@ -58,3 +58,92 @@ function handleSubmit(e) {
 
 window.toggleMenu = toggleMenu;
 window.handleSubmit = handleSubmit;
+
+function setupHeroVideo() {
+  const video = document.getElementById('hero-video');
+  const toggle = document.getElementById('hero-video-toggle');
+  const status = document.getElementById('hero-video-status');
+  if (!video || !toggle || !status) return;
+
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const connection = navigator.connection;
+  let userChoice = null;
+  let inView = video.getBoundingClientRect().bottom > 0;
+  let failureMessage = '';
+  let playbackRequest = 0;
+
+  function playbackEnabled() {
+    return userChoice === null
+      ? !motionPreference.matches && !(connection && connection.saveData)
+      : userChoice;
+  }
+
+  function shouldPlay() {
+    return playbackEnabled() && inView && !document.hidden;
+  }
+
+  function showPlaybackFailure(message, error) {
+    userChoice = false;
+    failureMessage = message;
+    video.pause();
+    toggle.textContent = 'Retry background video';
+    status.textContent = message;
+    console.warn(message, error);
+  }
+
+  function updatePlayback() {
+    const enabled = playbackEnabled();
+    toggle.textContent = failureMessage
+      ? 'Retry background video'
+      : enabled ? 'Pause background video' : 'Play background video';
+    status.textContent = failureMessage || (userChoice === null && !enabled
+      ? 'Background video is off to respect your motion or data-saving preference.'
+      : '');
+
+    if (!shouldPlay()) {
+      playbackRequest += 1;
+      video.pause();
+      return;
+    }
+    if (!video.paused) return;
+    if (!video.getAttribute('src') || video.error) {
+      video.src = window.matchMedia('(max-width: 900px)').matches
+        ? video.dataset.mobileSrc
+        : video.dataset.src;
+      video.load();
+    }
+    const request = ++playbackRequest;
+    video.play().catch((error) => {
+      if (error.name === 'AbortError' && (!shouldPlay() || request !== playbackRequest)) return;
+      showPlaybackFailure('Background video could not play. You can retry; all website content remains available.', error);
+    });
+  }
+
+  video.addEventListener('error', () => {
+    showPlaybackFailure('Background video could not load. You can retry; all website content remains available.', video.error);
+  });
+  toggle.addEventListener('click', () => {
+    userChoice = !playbackEnabled();
+    failureMessage = '';
+    updatePlayback();
+  });
+  function preferenceChanged() {
+    userChoice = null;
+    updatePlayback();
+  }
+  motionPreference.addEventListener('change', preferenceChanged);
+  if (connection && connection.addEventListener) {
+    connection.addEventListener('change', preferenceChanged);
+  }
+  document.addEventListener('visibilitychange', updatePlayback);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      updatePlayback();
+    }).observe(video);
+  }
+  toggle.hidden = false;
+  updatePlayback();
+}
+
+setupHeroVideo();

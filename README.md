@@ -43,6 +43,15 @@ The dedicated AudEx (Audit Excellence) product website lives in `audex/` and is 
 
 See `audex/README.md` for preview instructions, content boundaries and maintenance notes.
 
+## Features retained from the hosted website
+
+The homepage includes the original coding-workspace hero video and Client Zone entry points, while retaining this repository's SEO metadata, structured data and AudEx product links.
+
+- **Hero video:** streams the same original Pexels footage from external URLs; it is not bundled in this repository. At first load, screens up to 900px use the 640 x 360 version (approximately 1.7 MB), and larger screens use 1280 x 720 (approximately 8.9 MB), instead of the original 29.3 MB UHD file. Resizing does not force another download. The dark overlay, grid and glow keep the text readable and remain in place if playback is unavailable. A visible control pauses, plays or retries the background video. Reduced-motion and browser data-saving preferences disable automatic loading/playback; visitors can explicitly opt in. Playback pauses when the hero leaves view or the tab is hidden. JavaScript is required for video loading; without it, the static hero remains usable.
+- **Client Zone:** desktop navigation, mobile navigation and footer link directly to `https://mr-h-digital.github.io/mrh-invoice-ui/`, the separate existing invoice application. The portal's functionality remains owned by that application; this website does not implement or duplicate it.
+
+The contact form already matches the original site's WhatsApp enquiry flow and is preserved. The homepage video remains dependent on the external media provider's availability and transfer size; check the footage's current usage terms before changing its distribution.
+
 ## 🖼️ Screenshots
 <!-- Add screenshots or GIFs of your website here -->
 

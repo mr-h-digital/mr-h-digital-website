@@ -104,6 +104,19 @@
       color: var(--darker) !important; text-align: center;
       border-radius: 8px; border-bottom: none !important; font-size: 24px !important;
     }
+    .nav-links .nav-client-zone {
+      display: inline-block; border: 1px solid var(--lime);
+      color: var(--lime); padding: 9px 14px; border-radius: 6px;
+      font-weight: 600; letter-spacing: 0; white-space: nowrap;
+    }
+    .nav-links .nav-client-zone:hover { background: var(--lime); color: var(--darker); }
+    .mobile-drawer .mob-client-zone {
+      color: var(--lime); border: 1px solid var(--lime); border-radius: 8px;
+      text-align: center; font-size: 24px; margin-top: 20px; padding: 14px;
+    }
+    .nav-client-zone:focus-visible, .mob-client-zone:focus-visible, #hero-video-toggle:focus-visible {
+      outline: 3px solid var(--lime); outline-offset: 4px;
+    }
 
     /* ── HERO ── */
     .hero {
@@ -112,8 +125,30 @@
       padding: 120px 56px 80px;
       position: relative; overflow: hidden;
     }
+    .hero-video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      opacity: .25; mix-blend-mode: luminosity; pointer-events: none; z-index: 0;
+    }
+    .hero-video-overlay {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(135deg, rgba(15,16,19,.82), rgba(15,16,19,.58) 50%, rgba(15,16,19,.88));
+    }
+    .hero-content { position: relative; z-index: 4; width: 100%; min-width: 0; }
+    .hero-video-controls {
+      position: relative; z-index: 4; display: flex; align-items: center;
+      flex-wrap: wrap; gap: 10px 16px; margin-top: 28px;
+    }
+    #hero-video-toggle {
+      min-height: 44px; background: rgba(21,24,28,.85); color: var(--text);
+      border: 1px solid rgba(232,237,242,.35); border-radius: 6px;
+      padding: 10px 14px; font: inherit; font-size: 12px; cursor: pointer;
+    }
+    #hero-video-toggle:hover { border-color: var(--lime); color: var(--lime); }
+    #hero-video-status { color: var(--text); font-size: 12px; max-width: 520px; }
+    .hero-video-controls:has(#hero-video-toggle[hidden]) { display: none; }
     .hero-grid-bg {
-      position: absolute; inset: 0; pointer-events: none;
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
       background-image:
         linear-gradient(rgba(170,219,30,.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(170,219,30,.04) 1px, transparent 1px);
@@ -123,7 +158,7 @@
       position: absolute; top: -20%; right: -10%;
       width: 600px; height: 600px;
       background: radial-gradient(circle, rgba(170,219,30,.12) 0%, transparent 70%);
-      pointer-events: none;
+      pointer-events: none; z-index: 3;
     }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
@@ -498,6 +533,10 @@
     }
 
     /* ── MOBILE ── */
+    @media (min-width: 901px) and (max-width: 1200px) {
+      nav { padding-inline: 28px; }
+      .nav-links { gap: 16px; }
+    }
     @media (max-width: 900px) {
       /* Nav */
       nav { padding: 0 20px; height: 64px; }
@@ -700,4 +739,9 @@
       .price-amount { font-size: 34px; }
       footer { padding: 24px 16px; }
       .footer-links { gap: 10px 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
     }

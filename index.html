@@ -36,6 +36,7 @@
     <li><a href="#portfolio">Work</a></li>
     <li><a href="audex/">AudEx</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://mr-h-digital.github.io/mrh-invoice-ui/" class="nav-client-zone">Client Zone</a></li>
     <li><a href="#contact" class="nav-cta">Let's Talk →</a></li>
   </ul>
   <button class="hamburger" id="hbg" onclick="toggleMenu()" aria-label="Menu">
@@ -50,43 +51,52 @@
   <a href="#portfolio" onclick="toggleMenu()">Work</a>
   <a href="audex/">AudEx</a>
   <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="https://mr-h-digital.github.io/mrh-invoice-ui/" class="mob-client-zone" onclick="toggleMenu()">Client Zone</a>
   <a href="#contact" class="mob-cta" onclick="toggleMenu()">Let's Talk →</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
+  <video id="hero-video" class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="https://videos.pexels.com/video-files/3141207/3141207-hd_1280_720_25fps.mp4" data-mobile-src="https://videos.pexels.com/video-files/3141207/3141207-sd_640_360_25fps.mp4"></video>
+  <div class="hero-video-overlay" aria-hidden="true"></div>
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
-  <div class="hero-tag">Available for new projects</div>
-  <h1 class="hero-title">
-    We Build<br>
-    <span class="lime">Digital</span><br>
-    <span class="outline">Experiences.</span>
-  </h1>
-  <p class="hero-sub">
-    Mobile apps, websites, and web platforms for local businesses and startups across Cape Town and South Africa. Built by a real engineer, not a template machine.
-  </p>
-  <div class="hero-btns">
-    <a href="#contact" class="btn-primary">Start a Project →</a>
-    <a href="#portfolio" class="btn-outline">See Our Work</a>
+  <div class="hero-content">
+    <div class="hero-tag">Available for new projects</div>
+    <h1 class="hero-title">
+      We Build<br>
+      <span class="lime">Digital</span><br>
+      <span class="outline">Experiences.</span>
+    </h1>
+    <p class="hero-sub">
+      Mobile apps, websites, and web platforms for local businesses and startups across Cape Town and South Africa. Built by a real engineer, not a template machine.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Start a Project →</a>
+      <a href="#portfolio" class="btn-outline">See Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-lbl">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">20+</div>
+        <div class="stat-lbl">Projects Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-lbl">Custom Builds</div>
+      </div>
+      <div>
+        <div class="stat-num">CPT</div>
+        <div class="stat-lbl">Cape Town Based</div>
+      </div>
+    </div>
   </div>
-  <div class="hero-stats">
-    <div>
-      <div class="stat-num">5+</div>
-      <div class="stat-lbl">Years Experience</div>
-    </div>
-    <div>
-      <div class="stat-num">20+</div>
-      <div class="stat-lbl">Projects Delivered</div>
-    </div>
-    <div>
-      <div class="stat-num">100%</div>
-      <div class="stat-lbl">Custom Builds</div>
-    </div>
-    <div>
-      <div class="stat-num">CPT</div>
-      <div class="stat-lbl">Cape Town Based</div>
-    </div>
+  <div class="hero-video-controls">
+    <button type="button" id="hero-video-toggle" aria-controls="hero-video" hidden>Play background video</button>
+    <p id="hero-video-status" role="status"></p>
   </div>
 </section>
 
@@ -392,6 +402,7 @@
     <a href="#portfolio">Work</a>
     <a href="audex/">AudEx</a>
     <a href="#pricing">Pricing</a>
+    <a href="https://mr-h-digital.github.io/mrh-invoice-ui/">Client Zone</a>
     <a href="#contact">Contact</a>
   </div>
 </footer>
