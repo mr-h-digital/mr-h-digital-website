@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#15181c" />
   <meta name="description" content="Brand identity, websites and custom apps by Mr. H Digital in Cape Town. Explore TVECO, the Rock Mission ecosystem and AudEx. One partner, from brand to build.">
   <link rel="canonical" href="https://www.mrhdigital.co.za/" />
   <!-- Open Graph Meta Tags -->
@@ -22,6 +23,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/work.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <script src="js/theme.js"></script>
   <script src="js/work.js" defer></script>
 </head>
 <body>
@@ -42,9 +45,12 @@
     <li><a href="https://mr-h-digital.github.io/mrh-invoice-ui/" class="nav-client-zone">Client Zone</a></li>
     <li><a href="#contact" class="nav-cta">Let's Talk →</a></li>
   </ul>
+  <div class="nav-tools">
+  <select class="theme-select" data-theme-select aria-label="Colour theme" hidden><option value="dark">Dark</option><option value="light">Light</option><option value="system">System</option></select>
   <button class="hamburger" id="hbg" onclick="toggleMenu()" aria-label="Open navigation" aria-expanded="false" aria-controls="drawer">
     <span></span><span></span><span></span>
   </button>
+  </div>
 </nav>
 
 <!-- MOBILE DRAWER -->
@@ -373,6 +379,7 @@
 
 <!-- FOOTER -->
 <footer>
+  <p class="theme-status" id="theme-status" role="status"></p>
   <div>
     <div class="footer-copy">
       © 2025 <a href="#">Mr. H Digital</a> · Cape Town, South Africa · <a href="mailto:info@mrhdigital.co.za">info@mrhdigital.co.za</a>

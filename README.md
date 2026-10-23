@@ -72,6 +72,14 @@ Include 320px phones, tablet breakpoint boundaries (700/701px and 900/901px), de
 
 Reduced-motion styles explicitly reveal `.fade-up` content: disabling its reveal animation must not leave services, pricing or contact sections transparent. The product site's expanded mobile menu scrolls within short viewports rather than trapping its final links below the screen.
 
+### Portfolio styling and colour themes
+
+The main website, work collection and all three case studies share `css/theme.css`: neutral Mr. H Digital frames, consistent lime actions, borders and text hierarchy. Project branding is contained within real screenshots, illustrative product panels and identity swatches; images are never inverted or recoloured. Keep product-preview colours explicit rather than inheriting the site's light/dark tokens.
+
+Every main-site page has a labelled **Dark / Light / System** selector in its navigation. Dark is the default even on a light operating system. The synchronous `js/theme.js` applies the saved `mrh.theme` preference before body content renders, tracks OS changes only in System mode, and synchronizes preference changes between tabs. Storage failures are reported in a live status message without preventing the current page's theme change. Without JavaScript, the site retains its dark design and hides the unavailable selector. The dedicated `/audex/` product website remains independent and does not load these theme files.
+
+Run `node --test tests\theme.test.cjs` for dependency-free theme behaviour checks. When changing shared colours, inspect both themes on all five main-site pages, all ecosystem panels, mobile navigation, the contact form and project illustrations. In light mode, accessible dark-green text accents are separate from bright-lime button fills.
+
 ## 🖼️ Screenshots
 <!-- Add screenshots or GIFs of your website here -->
 
