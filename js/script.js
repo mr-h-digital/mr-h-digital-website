@@ -79,12 +79,23 @@ function setupHeroVideo() {
   const status = document.getElementById('hero-video-status');
   if (!video || !toggle || !status) return;
 
+  video.defaultPlaybackRate = 0.5;
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
   const connection = navigator.connection;
   let userChoice = null;
-  let inView = video.getBoundingClientRect().bottom > 0;
+  const initialBounds = video.getBoundingClientRect();
+  let inView = initialBounds.bottom > 0 && initialBounds.top < window.innerHeight;
   let failureMessage = '';
   let playbackRequest = 0;
+  let selectedSource = '';
+  const mobile = window.matchMedia('(max-width: 900px)').matches;
+
+  function sourceForTheme() {
+    const light = document.documentElement.dataset.theme === 'light';
+    return light
+      ? (mobile ? video.dataset.lightMobileSrc : video.dataset.lightSrc)
+      : (mobile ? video.dataset.darkMobileSrc : video.dataset.darkSrc);
+  }
 
   function playbackEnabled() {
     return userChoice === null
@@ -106,6 +117,18 @@ function setupHeroVideo() {
   }
 
   function updatePlayback() {
+    const source = sourceForTheme();
+    if (source !== selectedSource) {
+      selectedSource = source;
+      playbackRequest += 1;
+      failureMessage = '';
+      video.pause();
+      video.classList.remove('is-ready');
+      if (video.hasAttribute('src')) {
+        video.removeAttribute('src');
+        video.load();
+      }
+    }
     const enabled = playbackEnabled();
     toggle.textContent = failureMessage
       ? 'Retry background video'
@@ -121,21 +144,24 @@ function setupHeroVideo() {
     }
     if (!video.paused) return;
     if (!video.getAttribute('src') || video.error) {
-      video.src = window.matchMedia('(max-width: 900px)').matches
-        ? video.dataset.mobileSrc
-        : video.dataset.src;
+      video.src = selectedSource;
       video.load();
     }
     const request = ++playbackRequest;
+    video.playbackRate = video.defaultPlaybackRate;
     video.play().catch((error) => {
-      if (error.name === 'AbortError' && (!shouldPlay() || request !== playbackRequest)) return;
+      if (request !== playbackRequest || !shouldPlay()) return;
       showPlaybackFailure('Background video could not play. You can retry; all website content remains available.', error);
     });
   }
 
   video.addEventListener('error', () => {
+    if (!video.getAttribute('src')) return;
+    video.classList.remove('is-ready');
     showPlaybackFailure('Background video could not load. You can retry; all website content remains available.', video.error);
   });
+  video.addEventListener('playing', () => video.classList.add('is-ready'));
+  new MutationObserver(updatePlayback).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   toggle.addEventListener('click', () => {
     userChoice = !playbackEnabled();
     failureMessage = '';

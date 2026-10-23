@@ -45,12 +45,27 @@ See `audex/README.md` for preview instructions, content boundaries and maintenan
 
 ## Features retained from the hosted website
 
-The homepage includes the original coding-workspace hero video and Client Zone entry points, while retaining this repository's SEO metadata, structured data and AudEx product links.
+The homepage retains Client Zone entry points, SEO metadata, structured data and AudEx product links. Its hero now uses owner-supplied, theme-specific footage instead of the original external coding-workspace video.
 
-- **Hero video:** streams the same original Pexels footage from external URLs; it is not bundled in this repository. At first load, screens up to 900px use the 640 x 360 version (approximately 1.7 MB), and larger screens use 1280 x 720 (approximately 8.9 MB), instead of the original 29.3 MB UHD file. Resizing does not force another download. The dark overlay, grid and glow keep the text readable and remain in place if playback is unavailable. A visible control pauses, plays or retries the background video. Reduced-motion and browser data-saving preferences disable automatic loading/playback; visitors can explicitly opt in. Playback pauses when the hero leaves view or the tab is hidden. JavaScript is required for video loading; without it, the static hero remains usable.
+- **Hero video:** local files in `media/` follow the resolved Dark / Light / System theme, including OS and cross-tab changes. Both themes play at half speed (`defaultPlaybackRate` and `playbackRate` of `0.5`), including after source changes and retries. Only the matching video is loaded; changing theme unloads the previous clip, and a manual pause remains paused. Screens up to 900px select the mobile source on initial load; resizing does not force another download. Theme-matched WebP posters remain visible until playback starts, including on slow connections, with JavaScript disabled or if playback fails. Translucent, bordered glass panels protect text contrast without backdrop blur, and decorative grids/glows are disabled so the footage stays clear. A visible control pauses, plays or retries the video. Reduced-motion and browser data-saving preferences disable automatic video loading/playback; visitors can explicitly opt in. Playback pauses when the hero leaves view or the tab is hidden.
 - **Client Zone:** desktop navigation, mobile navigation and footer link directly to `https://mr-h-digital.github.io/mrh-invoice-ui/`, the separate existing invoice application. The portal's functionality remains owned by that application; this website does not implement or duplicate it.
 
-The contact form already matches the original site's WhatsApp enquiry flow and is preserved. The homepage video remains dependent on the external media provider's availability and transfer size; check the footage's current usage terms before changing its distribution.
+The contact form already matches the original site's WhatsApp enquiry flow and is preserved.
+
+### Optimised media
+
+The two owner-supplied source videos remain outside this repository. Following visual feedback, desktop files now preserve the original H.264 video streams without re-encoding: original resolution and approximately 30 fps, with no additional compression loss. Mobile clips use centre-cropped portrait compositions instead of enlarging low-resolution landscape encodes into tall screens. All files preserve the full clip duration, omit audio and use MP4 faststart so playback can begin before the complete download. Half-speed playback is applied by the browser, without duplicating frames or enlarging files. Sizes below are decimal MB:
+
+| Theme | Desktop | Mobile | Poster |
+|-------|---------|--------|--------|
+| Dark | 2560 x 1440, 29.24 MB | 720 x 1280, 18.96 MB | Desktop 187 KB / mobile 137 KB |
+| Light | 1920 x 1080, 16.05 MB | 606 x 1080, 5.72 MB | Desktop 15 KB / mobile 3 KB |
+
+This intentionally prioritises visual fidelity over the earlier smaller, softer encodes; full desktop downloads are no longer reduced. Posters, loading only the selected variant, faststart and pausing offscreen still protect the initial experience, but slow connections may buffer. Desktop remuxing uses FFmpeg `-map 0:v:0 -c:v copy -an -movflags +faststart`. Mobile encoding uses `libx264`, preset `slow`, CRF 20, yuv420p and the original frame rate; mobile re-encoding is not lossless. Posters are high-quality WebP frames from one second into each clip, with separate desktop and portrait crops. The `-hq` asset names avoid reuse of earlier cached low-resolution versions. Keep all four MP4s and four posters together when deploying; do not preload both themes.
+
+On-page Cardy's and WPC identities use 260px WebP derivatives for their 65px displays; the founder portrait also uses WebP. These three assets total about 54 KB instead of 625 KB, while existing optimised project captures are unchanged. Original PNG/JPEG files remain available; favicon, Apple icon and social-preview compatibility formats are preserved.
+
+Run `node --test tests\*.test.cjs` for theme and hero playback-state checks. Also exercise actual media playback in both themes on desktop and mobile, including manual pause, offscreen resume, theme changes, reduced motion, data saving and visible retry after network errors.
 
 ## Selected-work showroom and case studies
 
@@ -77,6 +92,8 @@ Reduced-motion styles explicitly reveal `.fade-up` content: disabling its reveal
 The main website, work collection and all three case studies share `css/theme.css`: neutral Mr. H Digital frames, consistent lime actions, borders and text hierarchy. Project branding is contained within real screenshots, illustrative product panels and identity swatches; images are never inverted or recoloured. Keep product-preview colours explicit rather than inheriting the site's light/dark tokens.
 
 Every main-site page has a labelled **Dark / Light / System** selector in its navigation. Dark is the default even on a light operating system. The synchronous `js/theme.js` applies the saved `mrh.theme` preference before body content renders, tracks OS changes only in System mode, and synchronizes preference changes between tabs. Storage failures are reported in a live status message without preventing the current page's theme change. Without JavaScript, the site retains its dark design and hides the unavailable selector. The dedicated `/audex/` product website remains independent and does not load these theme files.
+
+The theme selector progressively enhances the native select with `appearance: base-select`: a rounded, theme-matched popup, 44px option targets, lime selected state and checkmark. Unsupported browsers retain their native picker and keyboard/touch behaviour. Keep the native select rather than replacing it with a scripted menu.
 
 Run `node --test tests\theme.test.cjs` for dependency-free theme behaviour checks. When changing shared colours, inspect both themes on all five main-site pages, all ecosystem panels, mobile navigation, the contact form and project illustrations. In light mode, accessible dark-green text accents are separate from bright-lime button fills.
 
