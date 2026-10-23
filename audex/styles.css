@@ -23,7 +23,7 @@ button, a, summary { touch-action: manipulation; }
 button:disabled { cursor: not-allowed; }
 img { max-width: 100%; object-fit: contain; }
 h1, h2, h3, p { margin: 0; }
-h1, h2, h3 { font-family: "Manrope", sans-serif; font-weight: 650; }
+h1, h2, h3 { font-family: "Manrope", sans-serif; font-weight: 650; overflow-wrap: anywhere; }
 h1, h2 { letter-spacing: -.055em; line-height: 1.09; }
 h2 { font-size: clamp(2.2rem, 4.1vw, 3.75rem); }
 h3 { letter-spacing: -.035em; line-height: 1.3; }
@@ -41,6 +41,7 @@ h3 { letter-spacing: -.035em; line-height: 1.3; }
 .button:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 6px 18px #0b4d601a; }
 .button:disabled { background: #e6ebe8; color: #62716b; transform: none; box-shadow: none; }
 .button .icon { width: 18px; height: 18px; }
+.button > .icon, .text-link > .icon { flex-shrink: 0; }
 .button-small { min-height: 44px; padding: 12px 19px; gap: 17px; font-size: 12px; }
 .button-row { display: flex; flex-wrap: wrap; gap: 26px; align-items: center; }
 .text-link { font-size: 13px; font-weight: 600; display: inline-flex; gap: 15px; align-items: center; padding-block: 12px; }
@@ -79,11 +80,11 @@ h3 { letter-spacing: -.035em; line-height: 1.3; }
 .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center; min-height: 735px; padding-top: 38px; padding-bottom: 55px; }
 .hero-copy { position: relative; z-index: 2; padding-bottom: 12px; }
 .hero .eyebrow { font-size: 9px; margin-bottom: 27px; }
-.hero h1 { font-size: clamp(3.4rem, 5.2vw, 4.9rem); white-space: nowrap; }
+.hero h1 { font-size: clamp(3.4rem, 5.2vw, 4.9rem); }
 .hero h1 .serif { position: relative; display: inline-block; }
 .hero h1 .serif::after { content: ""; position: absolute; bottom: -6px; left: 1%; width: 99%; height: 8px; border-top: 2px solid var(--amber); border-radius: 50%; transform: rotate(-2deg); }
 .hero-description { max-width: 455px; font-size: 15px; line-height: 1.85; color: var(--muted); margin: 28px 0; }
-.hero-proof { display: flex; gap: 23px; margin-top: 28px; font-size: 10px; color: var(--muted); }
+.hero-proof { display: flex; flex-wrap: wrap; gap: 23px; margin-top: 28px; font-size: 10px; color: var(--muted); }
 .hero-proof > span { display: flex; align-items: center; gap: 6px; }
 .hero-proof .icon { width: 15px; height: 15px; }
 .maker { display: flex; align-items: center; gap: 6px; margin-top: 55px; font-size: 10px; color: var(--muted); }
@@ -356,7 +357,7 @@ h3 { letter-spacing: -.035em; line-height: 1.3; }
 .footer-maker img { grid-row: span 2; background: var(--teal-dark); padding: 4px; border-radius: 7px; }
 .footer-maker strong { display: block; font-size: 11px; color: var(--teal); }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; font-size: 8px; color: var(--muted); padding-top: 24px; }
-.footer-bottom nav { display: flex; gap: 24px; }
+.footer-bottom nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 @keyframes phone-arrive { from { opacity: 0; transform: translateY(18px) rotate(-3deg); } to { opacity: 1; transform: translateY(0) rotate(-6deg); } }
 
 @media (min-width: 1450px) {
@@ -445,10 +446,11 @@ h3 { letter-spacing: -.035em; line-height: 1.3; }
   .brand > span { font-size: 24px; }
   .brand small { font-size: 6px; }
   .desktop-nav { display: none; }
-  .nav-actions { margin-left: auto; }
-  .nav-actions .button { min-height: 40px; font-size: 10px; padding: 10px 14px; gap: 10px; }
+  .nav-actions { margin-left: auto; gap: 10px; }
+  .nav-actions .button { min-height: 44px; font-size: 10px; padding: 10px 14px; gap: 10px; }
   .nav-actions .button .icon { width: 14px; height: 14px; }
   .menu-toggle { display: block; }
+  .mobile-nav { max-height: calc(100vh - 74px); max-height: calc(100svh - 74px); overflow-y: auto; }
   .hero { grid-template-columns: 1fr; gap: 0; padding-top: 42px; padding-bottom: 26px; }
   .hero-copy { text-align: center; padding: 0; }
   .hero .eyebrow { justify-content: center; max-width: none; font-size: 7px; letter-spacing: .11em; margin-bottom: 24px; }
@@ -582,6 +584,7 @@ h3 { letter-spacing: -.035em; line-height: 1.3; }
   .footer-maker img { width: 28px; height: 28px; }
   .footer-bottom { font-size: 8px; gap: 16px; }
   .footer-bottom nav { width: 100%; order: -1; gap: 25px; font-size: 10px; }
+  .footer-bottom nav a { display: inline-flex; align-items: center; min-height: 44px; }
 }
 @media (max-width: 480px) {
   .feature-grid { grid-template-columns: 1fr; }

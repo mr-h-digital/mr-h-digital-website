@@ -64,6 +64,14 @@ TVECO portal, Rock Ledger and AudEx UI illustrations are explicitly labelled, co
 
 The homepage ecosystem selector supports arrow keys, Home and End; without JavaScript the ministry preview and direct links remain available, and the complete five-product story is readable on its case-study page. Gallery filters progressively enhance eight static project cards. Native links, contact actions and case studies work without JavaScript. Reduced-motion settings preserve static presentation. Cardy's and WPC remain in a separate “more work” collection, with WPC labelled in development.
 
+### Responsive layout maintenance
+
+Check all six pages (`/`, `/work/`, the three case studies and `/audex/`) with the actual Google display fonts loaded, as well as fallback fonts. Wide Syne headings need wrapping and grid children must be allowed to shrink; hidden body overflow alone does not prevent clipped text. Flagship previews stack at 1000px, and the AudEx story avoids double-padded mobile content. On phones, illustrative AudEx notes and disclaimers flow below the phone rather than overlapping it. Keep primary mobile navigation controls and footer links at least 44px tall, and allow product footer links and hero proof points to wrap.
+
+Include 320px phones, tablet breakpoint boundaries (700/701px and 900/901px), desktop layouts, enlarged text and short landscape screens when checking changes. Exercise both mobile menus, all ecosystem/product tabs, gallery filters, open FAQs and the contact form; check text inside cards as well as document-level horizontal scrolling. The static site has no build step.
+
+Reduced-motion styles explicitly reveal `.fade-up` content: disabling its reveal animation must not leave services, pricing or contact sections transparent. The product site's expanded mobile menu scrolls within short viewports rather than trapping its final links below the screen.
+
 ## 🖼️ Screenshots
 <!-- Add screenshots or GIFs of your website here -->
 

@@ -22,6 +22,9 @@
     }
     /* Improve tap targets on touch devices */
     a, button { -webkit-tap-highlight-color: transparent; }
+    h1, h2, h3, h4 { overflow-wrap: anywhere; }
+    .form-input, .form-textarea, .form-row > *, .contact-inner > * { min-width: 0; }
+    .contact-link > div:last-child { min-width: 0; overflow-wrap: anywhere; }
 
     .audex-product-visual {
       position: relative; display: flex; align-items: center; justify-content: center;
@@ -178,7 +181,7 @@
       font-size: clamp(48px, 7vw, 100px);
       font-weight: 800; line-height: .92;
       color: var(--white); letter-spacing: -2px;
-      margin-bottom: 32px; max-width: 900px;
+      margin-bottom: 32px; max-width: 1100px;
     }
     .hero-title .lime { color: var(--lime); }
     .hero-title .outline {
@@ -541,14 +544,14 @@
       /* Nav */
       nav { padding: 0 20px; height: 64px; }
       .nav-links { display: none; }
-      .hamburger { display: flex; }
+      .hamburger { display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; flex-shrink: 0; }
       .mobile-drawer { display: flex; top: 64px; }
 
       /* Hero */
       .hero {
         padding: 96px 20px 56px;
-        min-height: 100svh;
         min-height: 100vh;
+        min-height: 100svh;
         justify-content: flex-start;
         padding-top: clamp(88px, 20vw, 110px);
       }
@@ -560,7 +563,6 @@
         letter-spacing: -1px;
         line-height: 0.96;
         margin-bottom: 24px;
-        overflow: hidden;
         max-width: 100%;
       }
       /* "Experiences." — tighter scaling so it never overflows the viewport */
@@ -569,7 +571,6 @@
         font-size: clamp(22px, 7vw, 50px);
         letter-spacing: -2px;
         max-width: 100%;
-        overflow: hidden;
       }
       .hero-sub { font-size: 15px; line-height: 1.65; max-width: 100%; margin-bottom: 36px; }
       .hero-btns { flex-direction: column; align-items: stretch; gap: 12px; }
@@ -705,6 +706,7 @@
         gap: 12px 20px;
       }
       .footer-copy { font-size: 12px; line-height: 1.8; }
+      .footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
     }
 
     /* ── SMALL MOBILE ── */
@@ -744,4 +746,5 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
+      .fade-up { opacity: 1; transform: none; }
     }
