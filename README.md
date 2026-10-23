@@ -52,6 +52,18 @@ The homepage includes the original coding-workspace hero video and Client Zone e
 
 The contact form already matches the original site's WhatsApp enquiry flow and is preserved. The homepage video remains dependent on the external media provider's availability and transfer size; check the footage's current usage terms before changing its distribution.
 
+## Selected-work showroom and case studies
+
+The homepage leads with three flagship stories: TVECO, the Rock Mission ecosystem, and AudEx. `work/index.html` is the filterable project collection. Dedicated case studies live in `work/tveco/`, `work/rock-mission/`, and `work/audex/`. Publish the entire `work` directory with `css/work.css`, `js/work.js` and `images/work/`; no build step, API, iframe or server-side routing is needed on GitHub Pages.
+
+Branding, design and development credits for TVECO, its portal, the five Rock Mission projects and AudEx reflect the creator's confirmed scope. Descriptions intentionally avoid unverified technologies, private functionality, testimonials or performance outcomes. “Ecosystem” describes the shared organisation and product family, not shared authentication or backend integration.
+
+`images/work/` contains optimized WebP captures of real public pages from October 2026: TVECO, Rock Mission, Kingdom Drip, Rockidz and The Armory. Refresh these when a public design changes. The Armory's correct address is `https://learn.rockmission.co.za/`. Any figures or example progress visible inside captures are part of those sites' own public content, not measured portfolio outcomes.
+
+TVECO portal, Rock Ledger and AudEx UI illustrations are explicitly labelled, contain no private data, and are not passed off as screenshots. No sign-in or private account was accessed to produce this showcase. Retain these boundaries when replacing visuals; use only authorised, sanitised previews of private tools.
+
+The homepage ecosystem selector supports arrow keys, Home and End; without JavaScript the ministry preview and direct links remain available, and the complete five-product story is readable on its case-study page. Gallery filters progressively enhance eight static project cards. Native links, contact actions and case studies work without JavaScript. Reduced-motion settings preserve static presentation. Cardy's and WPC remain in a separate “more work” collection, with WPC labelled in development.
+
 ## 🖼️ Screenshots
 <!-- Add screenshots or GIFs of your website here -->
 

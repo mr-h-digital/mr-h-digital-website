@@ -3,26 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mr. H Digital builds custom websites, mobile apps, and web platforms for Cape Town businesses. Built by a real full-stack engineer — no templates.">
+  <meta name="description" content="Brand identity, websites and custom apps by Mr. H Digital in Cape Town. Explore TVECO, the Rock Mission ecosystem and AudEx. One partner, from brand to build.">
   <link rel="canonical" href="https://www.mrhdigital.co.za/" />
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Mr. H Digital | Mobile & Web App Design · Cape Town" />
-  <meta property="og:description" content="Mr. H Digital builds custom websites, mobile apps, and web platforms for Cape Town businesses. Built by a real full-stack engineer — no templates." />
+  <meta property="og:description" content="Brand identity, websites and custom apps. Explore TVECO, the Rock Mission ecosystem and AudEx: from the first impression to the tools behind it." />
   <meta property="og:image" content="https://www.mrhdigital.co.za/images/og-preview.png" />
   <meta property="og:url" content="https://www.mrhdigital.co.za/" />
   <meta property="og:type" content="website" />
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mr. H Digital | Mobile & Web App Design · Cape Town" />
-  <meta name="twitter:description" content="Mr. H Digital builds custom websites, mobile apps, and web platforms for Cape Town businesses. Built by a real full-stack engineer — no templates." />
+  <meta name="twitter:description" content="Brand identity, websites and custom apps. Explore the work of Mr. H Digital, from brand to build." />
   <meta name="twitter:image" content="https://www.mrhdigital.co.za/images/og-preview.png" />
   <title>Mr. H Digital | Mobile & Web App Design · Cape Town</title>
   <link rel="icon" type="image/png" sizes="32x32" href="images/logo-mrh-digital.png" />
   <link rel="apple-touch-icon" href="images/logo-mrh-digital.png" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/work.css" />
+  <script src="js/work.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#portfolio">Skip to selected work</a>
 
 <!-- NAV -->
 <nav>
@@ -39,13 +42,13 @@
     <li><a href="https://mr-h-digital.github.io/mrh-invoice-ui/" class="nav-client-zone">Client Zone</a></li>
     <li><a href="#contact" class="nav-cta">Let's Talk →</a></li>
   </ul>
-  <button class="hamburger" id="hbg" onclick="toggleMenu()" aria-label="Menu">
+  <button class="hamburger" id="hbg" onclick="toggleMenu()" aria-label="Open navigation" aria-expanded="false" aria-controls="drawer">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE DRAWER -->
-<div class="mobile-drawer" id="drawer">
+<div class="mobile-drawer" id="drawer" inert>
   <a href="#services" onclick="toggleMenu()">Services</a>
   <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#portfolio" onclick="toggleMenu()">Work</a>
@@ -69,11 +72,14 @@
       <span class="outline">Experiences.</span>
     </h1>
     <p class="hero-sub">
-      Mobile apps, websites, and web platforms for local businesses and startups across Cape Town and South Africa. Built by a real engineer, not a template machine.
+      From the brand people recognise to the website they discover you through and the tools that power your organisation. Brand identity, websites and custom apps, built to work together.
     </p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-primary">Start a Project →</a>
-      <a href="#portfolio" class="btn-outline">See Our Work</a>
+      <a href="#portfolio" class="btn-primary">Explore Our Work →</a>
+      <a href="#contact" class="btn-outline">Start a Project</a>
+    </div>
+    <div class="hero-project-links" aria-label="Featured projects">
+      <a href="work/tveco/">TVECO &#8599;</a><a href="work/rock-mission/">The Rock Mission ecosystem &#8599;</a><a href="work/audex/">AudEx &#8599;</a>
     </div>
     <div class="hero-stats">
       <div>
@@ -108,6 +114,51 @@
   </div>
 </div>
 
+<!-- SELECTED WORK -->
+<section class="showroom" id="portfolio" aria-labelledby="showroom-title">
+  <div class="work-shell">
+    <p class="work-kicker">SELECTED WORK / BRAND TO BUILD</p>
+    <div class="work-heading"><div><h2 id="showroom-title">Not just websites.<br><span>Entire possibilities.</span></h2></div><p>Distinctive brands. Purpose-built platforms. A few examples of what happens when one creative and technical partner brings the pieces together.</p></div>
+    <div class="work-capabilities"><span>Brand identity</span><span>Experience design</span><span>Web development</span><span>Custom applications</span></div>
+    <article class="flagship tveco-feature" id="tveco-showcase">
+      <div class="flagship-top"><span class="project-index">01 <b>TVECO</b></span><div class="project-category"><span>Brand identity</span><span>Website + client portal</span></div></div>
+      <div class="flagship-grid">
+        <div class="flagship-copy"><p class="work-kicker">VEHICLE EXPORTS / SOUTH AFRICA</p><h3>A bold first impression.<br>A place for the<br>relationship to continue.</h3><p>A distinctive vehicle-export brand, a public-facing website and a dedicated client portal. Two digital experiences, with one unmistakable identity.</p><span class="brand-credit">Branding, design &amp; development by Mr. H Digital</span><div class="flagship-actions"><a class="btn-primary" href="work/tveco/">Explore the project &#8594;</a><a class="work-link" href="https://tveco.co.za/" target="_blank" rel="noopener noreferrer">Visit website &#8599;</a></div><div class="identity-strip"><i style="--swatch:#ff7900"></i><i style="--swatch:#191d21"></i><i style="--swatch:#f4f5f6"></i><span>IDENTITY / EXPERIENCE / BUILD</span></div></div>
+        <div><div class="preview-composition"><div class="browser-frame"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>tveco.co.za</span></div><img src="images/work/tveco.webp" width="1200" height="833" alt="TVECO website with orange export branding, a shipping-container background and vehicle export services" loading="lazy"></div><div class="portal-peek"><div class="browser-bar"><span>TVECO / CLIENT PORTAL</span></div><div class="portal-peek-body"><span>BEYOND THE PUBLIC WEBSITE</span><strong>A dedicated<br>client space.</strong><p>A separate portal experience for TVECO.</p></div><span class="portal-peek-label">ILLUSTRATIVE PREVIEW / NOT A LIVE SCREEN</span></div></div><p class="preview-caption">Real public website capture. Portal inset is illustrative; no client data is shown.</p></div>
+      </div>
+      <div class="flagship-bottom"><strong>One brand, across the customer experience.</strong><span>Brand strategy brought to life in digital form.</span></div>
+    </article>
+    <article class="flagship rock-feature" id="rock-showcase">
+      <div class="flagship-top"><span class="project-index">02 <b>ROCK MISSION</b></span><div class="project-category"><span>Brand family</span><span>5 digital experiences</span></div></div>
+      <div class="ecosystem-intro"><div><p class="work-kicker">ONE MISSION. MULTIPLE WAYS TO MAKE IT MATTER.</p><h3>Not just a website.<br>A connected world.</h3><p>A ministry presence. A faith apparel store. A children's experience. A discipleship platform. An accounting tool. Distinct identities and purposes, brought together around Rock Mission.</p><span class="brand-credit">Branding, design &amp; development across the ecosystem</span></div><div class="ecosystem-orbit" aria-label="Rock Mission ecosystem: ministry website, Kingdom Drip, Rockidz, The Armory and Rock Ledger"><span>Kingdom Drip<br>COMMERCE</span><span class="orbit-centre">Rock Mission<br>THE MISSION</span><span>Rockidz<br>KIDS</span><span>The Armory<br>DISCIPLESHIP</span><span>Ministry website<br>DISCOVERY</span><span>Rock Ledger<br>OPERATIONS</span></div></div>
+      <div class="ecosystem-explorer" data-ecosystem>
+        <div class="ecosystem-tabs" role="tablist" aria-label="Explore the Rock Mission products" hidden>
+          <button type="button" role="tab" id="eco-tab-mission" aria-controls="eco-mission" aria-selected="true">The website</button>
+          <button type="button" role="tab" id="eco-tab-shop" aria-controls="eco-shop" aria-selected="false" tabindex="-1">Kingdom Drip</button>
+          <button type="button" role="tab" id="eco-tab-kids" aria-controls="eco-kids" aria-selected="false" tabindex="-1">Rockidz</button>
+          <button type="button" role="tab" id="eco-tab-learn" aria-controls="eco-learn" aria-selected="false" tabindex="-1">The Armory</button>
+          <button type="button" role="tab" id="eco-tab-ledger" aria-controls="eco-ledger" aria-selected="false" tabindex="-1">Rock Ledger</button>
+        </div>
+        <div class="ecosystem-panel" id="eco-mission" role="tabpanel" aria-labelledby="eco-tab-mission" tabindex="0"><div><p class="work-kicker">01 / THE PUBLIC PRESENCE</p><h4>A mission with<br>an unmistakable identity.</h4><p>A bold visual language and a public home for the ministry, its outreach and the wider Rock Mission family.</p><div class="identity-strip"><i style="--swatch:#04d1d0"></i><i style="--swatch:#ff16a1"></i><i style="--swatch:#111634"></i><span>BRAND + WEBSITE</span></div><a class="work-link" href="work/rock-mission/#ministry">Explore the ministry website &#8594;</a></div><div><div class="browser-frame"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>rockmission.co.za</span></div><img src="images/work/rockmission.webp" width="1200" height="833" alt="Rock Mission Ministries website with cyan and pink identity and the message Jesus is King" loading="lazy"></div><p class="preview-caption">Real public website capture.</p></div></div>
+        <div class="ecosystem-panel" id="eco-shop" role="tabpanel" aria-labelledby="eco-tab-shop" tabindex="0" hidden><div><p class="work-kicker">02 / FAITH MEETS COMMERCE</p><h4>Wear the message.<br>Explore the brand.</h4><p>Kingdom Drip brings faith apparel into a distinctive online store, with its own identity and a clear relationship to Rock Mission.</p><div class="identity-strip"><i style="--swatch:#00d5d0"></i><i style="--swatch:#ed1b89"></i><i style="--swatch:#0e1119"></i><span>BRAND + ONLINE STORE</span></div><a class="work-link" href="work/rock-mission/#kingdom-drip">Explore Kingdom Drip &#8594;</a></div><div><div class="browser-frame"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>shop.rockmission.co.za</span></div><img src="images/work/kingdom-drip.webp" width="1200" height="833" alt="Kingdom Drip storefront with branded faith apparel and a Cape Town streetwear hero" loading="lazy"></div><p class="preview-caption">Real public storefront capture.</p></div></div>
+        <div class="ecosystem-panel" id="eco-kids" role="tabpanel" aria-labelledby="eco-tab-kids" tabindex="0" hidden><div><p class="work-kicker">03 / A WORLD FOR LITTLE EXPLORERS</p><h4>Big imagination.<br>A playful way to learn.</h4><p>Rockidz Kids Corner gives Bible stories and activities a colourful, welcoming home, with a playful brand built for its audience.</p><div class="identity-strip"><i style="--swatch:#00b8ef"></i><i style="--swatch:#ff3ca8"></i><i style="--swatch:#ffc52c"></i><span>BRAND + KIDS WEB APP</span></div><a class="work-link" href="work/rock-mission/#rockidz">Explore Rockidz &#8594;</a></div><div><div class="browser-frame"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>rockidz.rockmission.co.za</span></div><img src="images/work/rockidz.webp" width="1200" height="833" alt="Rockidz Kids Corner public landing page with colourful space artwork and Bible story activities" loading="lazy"></div><p class="preview-caption">Real public landing-page capture. No children's account data.</p></div></div>
+        <div class="ecosystem-panel" id="eco-learn" role="tabpanel" aria-labelledby="eco-tab-learn" tabindex="0" hidden><div><p class="work-kicker">04 / EQUIPPED BY TRUTH</p><h4>A purposeful place<br>to grow in faith.</h4><p>The Armory brings discipleship and Bible study into a dedicated platform, with a focused identity and an invitation to keep learning.</p><div class="identity-strip"><i style="--swatch:#23d0c4"></i><i style="--swatch:#a77cff"></i><i style="--swatch:#080d18"></i><span>BRAND + LEARNING PLATFORM</span></div><a class="work-link" href="work/rock-mission/#armory">Explore The Armory &#8594;</a></div><div><div class="browser-frame"><div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>learn.rockmission.co.za</span></div><img src="images/work/armory.webp" width="1200" height="833" alt="The Armory public landing page with its Equipped by Truth brand and training-path introduction" loading="lazy"></div><p class="preview-caption">Real public landing-page capture; any example progress belongs to that site's public presentation.</p></div></div>
+        <div class="ecosystem-panel" id="eco-ledger" role="tabpanel" aria-labelledby="eco-tab-ledger" tabindex="0" hidden><div><p class="work-kicker">05 / BEHIND THE MISSION</p><h4>Purpose on the outside.<br>Practical tools inside.</h4><p>Rock Ledger is the ministry's dedicated accounting tool. A focused operational product, with branding and development by the same partner.</p><a class="work-link" href="work/rock-mission/#ledger">Explore Rock Ledger &#8594;</a></div><div><div class="illustrative-tool ledger-illustration"><span>ROCK LEDGER / ACCOUNTING TOOL</span><h3>Made for the work<br>behind the mission.</h3><p>A dedicated space for the organisation's accounting work.</p><div class="tool-rows" aria-hidden="true"><span>Purpose-built operational experience</span><span>A distinct product within the brand family</span><span>Designed &amp; developed by Mr. H Digital</span></div><small>Illustrative product presentation. Not a screenshot. No financial data.</small></div><p class="preview-caption">Private workspace not accessed or reproduced.</p></div></div>
+      </div>
+      <div class="ecosystem-links"><span>Public destinations / each opens in a new tab</span><a href="https://rockmission.co.za/" target="_blank" rel="noopener noreferrer">Rock Mission &#8599;</a><a href="https://shop.rockmission.co.za/" target="_blank" rel="noopener noreferrer">Kingdom Drip &#8599;</a><a href="https://rockidz.rockmission.co.za/" target="_blank" rel="noopener noreferrer">Rockidz &#8599;</a><a href="https://learn.rockmission.co.za/" target="_blank" rel="noopener noreferrer">The Armory &#8599;</a><a href="https://ledger.rockmission.co.za/" target="_blank" rel="noopener noreferrer">Rock Ledger &#8599;</a></div>
+      <div class="flagship-bottom"><strong>One organisation. Five distinct digital experiences.</strong><a class="work-link" href="work/rock-mission/">Discover the ecosystem &#8594;</a></div>
+    </article>
+    <article class="flagship audex-feature" id="audex-showcase">
+      <div class="flagship-top"><span class="project-index">03 <b>AUDEX / AUDIT EXCELLENCE</b></span><div class="project-category"><span>Product identity</span><span>Mobile-first web app</span></div></div>
+      <div class="flagship-grid"><div class="flagship-copy"><p class="work-kicker">A MR. H DIGITAL PRODUCT</p><h3>From the first check<br>to a clearer picture.</h3><p>A purpose-built housekeeping audit app for care environments. The brand, mobile-first experience and software brought together around a practical everyday task.</p><span class="brand-credit">Branding, product design &amp; development by Mr. H Digital</span><div class="flagship-actions"><a class="btn-primary" href="work/audex/">See the product story &#8594;</a><a class="work-link" href="audex/">Discover AudEx &#8599;</a></div><div class="identity-strip"><i style="--swatch:#0b4d60"></i><i style="--swatch:#f29934"></i><i style="--swatch:#faf9f5"></i><span>PRODUCT IDENTITY / EXPERIENCE / BUILD</span></div></div><div class="audex-display"><div class="audex-mini-phone"><div class="audex-mini-brand"><img src="audex/assets/audex-mark.webp" width="30" height="25" alt="">AudEx</div><h4>Every detail.<br>Every day.</h4><div class="mini-check">Reception <span>Checked</span></div><div class="mini-check">Patient areas <span>Checked</span></div><div class="mini-check">Chemical storage <span>In progress</span></div><div class="mini-progress"></div><div class="mini-button">Continue your audit &#8594;</div></div><div class="audex-display-note"><strong>Less paper.<br>More perspective.</strong>Capture. Score. Understand. Report.</div><small>Illustrative interface. No audit or patient data.</small></div></div>
+      <div class="flagship-bottom"><strong>A considered identity for a purpose-built tool.</strong><span>Offline-capable audits / weighted scoring / PDF reports</span></div>
+    </article>
+    <div class="work-heading" style="margin-top:55px;margin-bottom:0"><h2 style="font-size:28px">More work. Same care.</h2><a class="work-link" href="work/">Explore the full collection &#8594;</a></div>
+    <div class="more-work"><article><img src="images/cardys-tacos-logo.png" width="65" height="65" alt="Cardy's Tacos logo" loading="lazy"><div><h3>Cardy's Tacos &amp; Takeaways</h3><p>A custom food-truck website with WhatsApp ordering and a mobile-first menu experience.</p><small>WEBSITE / ORDERING EXPERIENCE</small></div></article><article><img src="images/wpc-broadsheet-manager.jpg" width="65" height="65" alt="WPC Broadsheet Manager identity" loading="lazy"><div><h3>WPC Broadsheet Manager</h3><p>A meal-management application for welfare and residential facilities.</p><small>ANDROID APPLICATION / IN DEVELOPMENT</small></div></article></div>
+    <div class="showroom-outro"><p><strong>Your brand. Your next chapter.</strong><br>Let's build the pieces that move it forward.</p><a class="work-link" href="#contact">Discuss your digital ecosystem &#8594;</a></div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section class="section services" id="services">
   <div class="sec-eyebrow fade-up">// What We Do</div>
@@ -117,10 +168,10 @@
     <div class="service-card">
       <div class="service-num">01</div>
       <div class="service-icon">🌐</div>
-      <div class="service-title">Business Websites</div>
-      <div class="service-desc">Fast, mobile-first websites that look great, rank on Google, and convert visitors into customers. Fully custom — no page builders.</div>
+      <div class="service-title">Brand Identity &amp; Websites</div>
+      <div class="service-desc">A recognisable identity and a custom, mobile-first website to bring it to life. From visual branding to the experience your visitors use — no page builders.</div>
       <div class="service-tags">
-        <span class="tag">HTML/CSS</span><span class="tag">Responsive</span><span class="tag">SEO</span>
+        <span class="tag">Branding</span><span class="tag">Responsive</span><span class="tag">SEO</span>
       </div>
     </div>
     <div class="service-card">
@@ -197,75 +248,6 @@
         <li>Mobile-first, performance-obsessed approach</li>
       </ul>
       <a href="#contact" class="btn-primary" style="display:inline-flex;margin-top:8px;">Work with me →</a>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section class="section portfolio" id="portfolio">
-  <div class="sec-eyebrow fade-up">// Our Work</div>
-  <h2 class="sec-title fade-up">Built with care.<br>Delivered with pride.</h2>
-  <div class="portfolio-grid fade-up">
-    <article class="portfolio-card audex-product-card">
-      <a class="audex-product-visual" href="audex/" aria-label="Discover AudEx, Audit Excellence">
-        <img src="audex/assets/audex-mark.webp" alt="" width="122" height="100" loading="lazy" />
-        <span class="audex-product-name">AudEx<small>AUDIT EXCELLENCE</small></span>
-        <span class="p-label">A Mr. H Digital Product</span>
-      </a>
-      <div class="p-body">
-        <div class="p-title">AudEx &mdash; Audit Excellence</div>
-        <div class="p-desc">A mobile-first housekeeping audit app for clinics, hospitals and care facilities. Capture findings offline, score consistently, see the bigger picture and create shareable PDF reports.</div>
-        <div class="p-stack">
-          <span class="tag">Mobile First</span><span class="tag">Offline Capable</span><span class="tag">Analytics</span><span class="tag">PWA</span>
-        </div>
-        <a href="audex/" class="btn-primary" style="display:inline-flex;font-size:13px;padding:12px 20px;margin-top:20px;">Discover AudEx &rarr;</a>
-      </div>
-    </article>
-    <div class="portfolio-card featured">
-      <div class="p-thumb">
-        <div class="p-thumb-bg" style="background:var(--darker);">
-          <img src="images/cardys-tacos-logo.png" alt="Cardy's Tacos and Takeaways logo - Blackheath Cape Town food truck" style="width:220px;height:220px;object-fit:contain;" />
-        </div>
-        <div class="p-thumb-overlay"></div>
-        <div class="p-label">Live Project</div>
-      </div>
-      <div class="p-body">
-        <div class="p-title">Cardy's Tacos & Takeaways</div>
-        <div class="p-desc">Full custom website for a Blackheath food truck startup. WhatsApp ordering on every menu item, Google Maps integration, mobile-first responsive design, and animated sections — all in a single lightweight HTML file.</div>
-        <div class="p-stack">
-          <span class="tag">HTML/CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">WhatsApp API</span>
-          <span class="tag">Google Maps</span>
-          <span class="tag">Mobile First</span>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <div class="p-thumb" style="height:200px;background:#0a0a0a;display:flex;align-items:center;justify-content:center;position:relative;">
-        <img src="images/wpc-broadsheet-manager.jpg" alt="WPC Broadsheet Manager Android app by Mr. H Digital" style="width:140px;height:140px;object-fit:contain;border-radius:50%;" />
-        <div class="p-label" style="background:rgba(170,219,30,.15);color:var(--lime);border:1px solid rgba(170,219,30,.3);">In Development</div>
-      </div>
-      <div class="p-body">
-        <div class="p-title">WPC Broadsheet Manager</div>
-        <div class="p-desc">Android + Spring Boot meal management system for welfare and residential facilities. Currently in development.</div>
-        <div class="p-stack">
-          <span class="tag">Android</span><span class="tag">Spring Boot</span><span class="tag">Room DB</span>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <div class="p-thumb" style="height:200px;">
-        <div class="coming-soon">
-          <div class="coming-soon-icon">🚀</div>
-          <div class="coming-soon-text">Next Project<br>Coming Soon</div>
-        </div>
-      </div>
-      <div class="p-body">
-        <div class="p-title">Your Business Here</div>
-        <div class="p-desc">Ready to be the next success story? Let's build something great together.</div>
-        <a href="#contact" class="btn-primary" style="display:inline-flex;font-size:13px;padding:12px 20px;margin-top:8px;">Start a conversation →</a>
-      </div>
     </div>
   </div>
 </section>
@@ -400,6 +382,7 @@
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#portfolio">Work</a>
+    <a href="work/">Project collection</a>
     <a href="audex/">AudEx</a>
     <a href="#pricing">Pricing</a>
     <a href="https://mr-h-digital.github.io/mrh-invoice-ui/">Client Zone</a>
@@ -417,7 +400,7 @@
   "url": "https://www.mrhdigital.co.za",
   "email": "info@mrhdigital.co.za",
   "telephone": "+27766871671",
-  "description": "Custom website and mobile app development for Cape Town businesses.",
+  "description": "Brand identity, custom websites, mobile apps and web platforms by Mr. H Digital in Cape Town.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Cape Town",

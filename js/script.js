@@ -4,8 +4,22 @@ function toggleMenu() {
   if (!h || !d) return;
   h.classList.toggle('open');
   d.classList.toggle('open');
-  document.body.style.overflow = d.classList.contains('open') ? 'hidden' : '';
+  const isOpen = d.classList.contains('open');
+  d.inert = !isOpen;
+  h.setAttribute('aria-expanded', String(isOpen));
+  h.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && document.getElementById('drawer').classList.contains('open')) {
+    toggleMenu();
+    document.getElementById('hbg').focus();
+  }
+});
+window.matchMedia('(max-width: 900px)').addEventListener('change', (event) => {
+  if (!event.matches && document.getElementById('drawer').classList.contains('open')) toggleMenu();
+});
 
 function handleSubmit(e) {
   e.preventDefault();
