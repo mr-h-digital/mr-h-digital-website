@@ -6,25 +6,37 @@ const { runInNewContext } = require("node:vm");
 const script = readFileSync(join(__dirname, "..", "audex", "script.js"), "utf8");
 const contactScript = script.slice(script.indexOf('const enquiryForm ='));
 
-function harness(fetch) {
+function harness(fetch, facilityTypes = [], otherFacilityType = "") {
   const button = { disabled: true };
   const status = { dataset: {}, focus() { this.focused = true; } };
   const data = new Map(Object.entries({
     name: " Visitor ", email: "visitor@example.test", type: "ACCESS",
-    message: "Please explain access.", consent: "on", sites: "2",
+    message: "Please explain access.", consent: "on", sites: "2", otherFacilityType,
   }));
+  const otherInput = {};
+  const otherDetails = { querySelector: () => otherInput };
+  const otherCheckbox = {
+    checked: facilityTypes.includes("OTHER"), setAttribute() {},
+    addEventListener(_, listener) { this.change = listener; },
+  };
   const form = {
     action: "https://audex-api.mrhdigital.co.za/api/contact",
     querySelector: () => button, reportValidity: () => true,
     addEventListener(_, listener) { this.submit = listener; },
-    reset() { this.cleared = true; },
+    reset() { this.cleared = true; otherCheckbox.checked = false; },
   };
   runInNewContext(contactScript, {
-    document: { getElementById: id => id === "audex-contact-form" ? form : status },
-    window: {}, FormData: class { get(key) { return data.get(key); } },
+    document: { getElementById: id => ({
+      "audex-contact-form": form, "enquiry-status": status,
+      "facility-other": otherCheckbox, "facility-other-details": otherDetails,
+    })[id] },
+    window: {}, FormData: class {
+      get(key) { return data.get(key); }
+      getAll(key) { return key === "facilityTypes" ? facilityTypes : []; }
+    },
     fetch, AbortController, setTimeout, clearTimeout, Error, TypeError, SyntaxError,
   });
-  return { form, button, status, submit: () => form.submit({ preventDefault() {} }) };
+  return { form, button, status, otherCheckbox, otherDetails, otherInput, submit: () => form.submit({ preventDefault() {} }) };
 }
 
 test("accepted SMTP response clears the form and sends only the expected JSON without credentials", async () => {
@@ -41,9 +53,37 @@ test("accepted SMTP response clears the form and sends only the expected JSON wi
   assert.equal(request.credentials, "omit");
   assert.deepEqual(JSON.parse(request.body), {
     name: "Visitor", email: "visitor@example.test", type: "ACCESS",
-    organisation: "", facilityType: "", phone: "", message: "Please explain access.",
+    organisation: "", facilityTypes: [], otherFacilityType: "", phone: "", message: "Please explain access.",
     website: "", sites: 2, consent: true,
   });
+
+});
+
+test("multiple facility selections and Other details are submitted and reset together", async () => {
+  let body;
+  const h = harness(async (_, options) => {
+    body = JSON.parse(options.body);
+    return { ok: true, json: async () => ({ status: "accepted", message: "Accepted." }) };
+  }, ["HOSPITAL", "CLINIC", "OTHER"], " Rehabilitation centre ");
+  assert.equal(h.otherDetails.hidden, false);
+  assert.equal(h.otherInput.required, true);
+  assert.equal(h.otherInput.disabled, false);
+  await h.submit();
+  assert.deepEqual(body.facilityTypes, ["HOSPITAL", "CLINIC", "OTHER"]);
+  assert.equal(body.otherFacilityType, "Rehabilitation centre");
+  assert.equal(h.otherDetails.hidden, true);
+  assert.equal(h.otherInput.disabled, true);
+  assert.equal(h.otherInput.required, false);
+});
+
+test("deselecting Other hides and disables its field without discarding entered text", () => {
+  const h = harness(() => {}, ["OTHER"], "Rehabilitation centre");
+  h.otherInput.value = "Rehabilitation centre";
+  h.otherCheckbox.checked = false;
+  h.otherCheckbox.change();
+  assert.equal(h.otherDetails.hidden, true);
+  assert.equal(h.otherInput.disabled, true);
+  assert.equal(h.otherInput.value, "Rehabilitation centre");
 });
 
 for (const scenario of ["unavailable", "limited", "network", "timeout", "unexpected", "malformed"]) {

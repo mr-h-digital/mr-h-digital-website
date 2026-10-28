@@ -238,8 +238,18 @@
             <label class="enquiry-wide">I would like to *<select name="type" required><option value="ACCESS">Request access</option><option value="WALKTHROUGH">Book a walkthrough</option><option value="QUESTION">Ask a question</option></select></label>
             <label>Organisation / business<input name="organisation" autocomplete="organization" maxlength="160"></label>
             <label>Phone / WhatsApp (optional)<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
-            <label>Facility type<select name="facilityType"><option value="">Not specified</option><option value="HOSPITAL">Hospital</option><option value="CLINIC">Clinic</option><option value="RETIREMENT_VILLAGE">Retirement village</option><option value="MIXED">Multiple types</option><option value="OTHER">Other</option></select></label>
-            <label>Number of sites (optional)<input name="sites" type="number" min="1" max="10000" inputmode="numeric"></label>
+            <fieldset class="enquiry-wide facility-types" aria-describedby="facility-types-help">
+              <legend>Facility types (optional)</legend>
+              <p id="facility-types-help">Select all that apply.</p>
+              <div class="facility-options">
+                <label><input name="facilityTypes" type="checkbox" value="HOSPITAL"> Hospital</label>
+                <label><input name="facilityTypes" type="checkbox" value="CLINIC"> Clinic</label>
+                <label><input name="facilityTypes" type="checkbox" value="RETIREMENT_VILLAGE"> Retirement village / senior living</label>
+                <label><input name="facilityTypes" id="facility-other" type="checkbox" value="OTHER" aria-controls="facility-other-details" aria-expanded="false"> Other</label>
+              </div>
+              <label id="facility-other-details" hidden>Please specify the other facility type *<input name="otherFacilityType" maxlength="160" disabled></label>
+            </fieldset>
+            <label class="enquiry-wide">Total number of sites (optional)<input name="sites" type="number" min="1" max="10000" inputmode="numeric" aria-describedby="sites-help"><span id="sites-help">Across all selected facility types.</span></label>
             <label class="enquiry-wide">Your message *<textarea name="message" rows="5" required maxlength="3000" aria-describedby="enquiry-privacy" placeholder="Tell us what you need, without sensitive audit or patient details."></textarea></label>
           </div>
           <div class="enquiry-trap" aria-hidden="true"><label>Leave this field empty<input name="website" tabindex="-1" autocomplete="off"></label></div>

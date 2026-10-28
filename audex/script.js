@@ -147,6 +147,18 @@ document.getElementById("year").textContent = String(new Date().getFullYear());
 const enquiryForm = document.getElementById("audex-contact-form");
 const enquiryStatus = document.getElementById("enquiry-status");
 const enquirySubmit = enquiryForm.querySelector('button[type="submit"]');
+const otherFacilityCheckbox = document.getElementById("facility-other");
+const otherFacilityDetails = document.getElementById("facility-other-details");
+const otherFacilityInput = otherFacilityDetails.querySelector("input");
+function updateOtherFacility() {
+  const selected = otherFacilityCheckbox.checked;
+  otherFacilityDetails.hidden = !selected;
+  otherFacilityInput.disabled = !selected;
+  otherFacilityInput.required = selected;
+  otherFacilityCheckbox.setAttribute("aria-expanded", String(selected));
+}
+otherFacilityCheckbox.addEventListener("change", updateOtherFacility);
+updateOtherFacility();
 enquirySubmit.disabled = false;
 if ("IntersectionObserver" in window) {
   const floatingWhatsApp = document.querySelector(".whatsapp-float");
@@ -161,7 +173,9 @@ enquiryForm.addEventListener("submit", async (event) => {
   if (sendingEnquiry || !enquiryForm.reportValidity()) return;
   const fields = new FormData(enquiryForm);
   const value = (key) => String(fields.get(key) || "").trim();
-  const body = Object.fromEntries(["name", "email", "type", "organisation", "facilityType", "phone", "message", "website"].map(key => [key, value(key)]));
+  const body = Object.fromEntries(["name", "email", "type", "organisation", "phone", "message", "website"].map(key => [key, value(key)]));
+  body.facilityTypes = fields.getAll("facilityTypes");
+  body.otherFacilityType = body.facilityTypes.includes("OTHER") ? value("otherFacilityType") : "";
   body.sites = value("sites") ? Number(value("sites")) : null;
   body.consent = fields.get("consent") === "on";
   sendingEnquiry = true;
@@ -183,6 +197,7 @@ enquiryForm.addEventListener("submit", async (event) => {
     if (result?.status !== "accepted" || typeof result.message !== "string" || !result.message.trim()) throw new Error("The email service did not confirm acceptance. Please contact us directly.");
     enquiryStatus.textContent = result.message;
     enquiryForm.reset();
+    updateOtherFacility();
   } catch (error) {
     enquiryStatus.dataset.error = "true";
     enquiryStatus.textContent = (error instanceof Error && error.name !== "AbortError" && !(error instanceof TypeError) && !(error instanceof SyntaxError)

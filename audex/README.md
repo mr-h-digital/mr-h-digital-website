@@ -45,6 +45,8 @@ Keep the canonical URL, structured data, social metadata and parent sitemap cons
 
 ### Contact form deployment
 
+Facility types use visible, optional "select all that apply" checkboxes. Selecting Other reveals a required description; the site count is the total across all selected types. The form submits `facilityTypes` and `otherFacilityType`, and the API lists the selections in the enquiry email. Deploy the API version supporting these fields before publishing this website update; users do not need to describe their facility mix in the message.
+
 Enable the API endpoint with `AUDEX_CONTACT_ENABLED=true`, configured SMTP and a verified `AUDEX_MAIL_FROM`; allow the website origin in `AUDEX_ALLOWED_ORIGINS` without removing the app origin. Follow the API README's public-enquiry instructions, including external rate/body limits and privacy/retention responsibilities. Never commit SMTP secrets. The API deliberately returns an error rather than logging enquiries as if delivered when SMTP is unavailable.
 
 Deploy the API first and confirm an enquiry arrives at `info@mrhdigital.co.za` with the visitor's email as Reply-To. Then publish this static directory. The form clears only after a successful JSON acceptance; failures, timeouts, disabled configuration and rate limits keep entries and offer email/WhatsApp alternatives. SMTP acceptance does not guarantee inbox delivery, and retry after an ambiguous failure may duplicate mail. Without JavaScript, the submit action remains disabled and direct contact links are available. The floating WhatsApp link hides while the contact section is visible so it does not obscure form controls.

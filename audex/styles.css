@@ -90,6 +90,13 @@ h3 { letter-spacing: -.035em; line-height: 1.3; }
 .enquiry-form input, .enquiry-form select, .enquiry-form textarea { width: 100%; min-width: 0; min-height: 44px; padding: 10px; border: 1px solid #94a7ac; border-radius: 6px; background: white; color: var(--ink); font: inherit; }
 .enquiry-form textarea { resize: vertical; }
 .enquiry-wide { grid-column: 1 / -1; }
+.facility-types { min-width: 0; margin: 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+.facility-types legend { padding-inline: 5px; font-size: 13px; font-weight: 600; }
+.facility-types #facility-types-help { margin-block: 0 8px; }
+.facility-options { display: grid; gap: 4px; margin-bottom: 12px; }
+.facility-options label { display: flex; align-items: center; min-height: 44px; cursor: pointer; }
+.facility-options input { flex: 0 0 20px; width: 20px; min-height: 20px; margin: 0 4px 0 0; accent-color: var(--teal); }
+#sites-help { font-size: 12px; color: var(--muted); }
 .enquiry-form .enquiry-consent { display: flex; align-items: flex-start; margin-block: 16px; }
 .enquiry-consent input { flex: 0 0 20px; width: 20px; min-height: 20px; margin-top: 2px; }
 .enquiry-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }

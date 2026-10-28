@@ -88,3 +88,17 @@ test("enquiries have accessible required fields, direct fallback and one WhatsAp
   assert.equal(whatsapp.length, 2);
   for (const [, number] of whatsapp) assert.equal(number, "27845414102");
 });
+
+test("facility types allow multiple selections without relying on the message", () => {
+  const contact = section("contact");
+  assert.match(contact, /<legend>Facility types \(optional\)<\/legend>/);
+  assert.match(contact, /Select all that apply/);
+  for (const type of ["HOSPITAL", "CLINIC", "RETIREMENT_VILLAGE", "OTHER"]) {
+    assert.match(contact, new RegExp(`<input name="facilityTypes"[^>]*type="checkbox"[^>]*value="${type}"`));
+  }
+  assert.doesNotMatch(contact, /name="facilityType"|value="MIXED"/);
+  assert.match(contact, /id="facility-other-details" hidden/);
+  assert.match(contact, /name="otherFacilityType" maxlength="160" disabled/);
+  assert.match(contact, /Total number of sites \(optional\)/);
+  assert.match(contact, /Across all selected facility types/);
+});
