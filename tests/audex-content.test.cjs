@@ -25,6 +25,16 @@ test("desktop, mobile and footer navigation link directly to the contact section
   }
 });
 
+test("desktop header and mobile menu expose the same destinations and section labels", () => {
+  const links = value => [...value.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)]
+    .map(([, href, label]) => ({ href, label: text(label).trim() }));
+  const desktop = html.match(/<nav class="desktop-nav"[^>]*>([\s\S]*?)<\/nav>/)[1];
+  const actions = html.match(/<div class="nav-actions">([\s\S]*?)<\/div>/)[1];
+  const mobile = html.match(/<nav class="mobile-nav"[^>]*>([\s\S]*?)<\/nav>/)[1];
+  assert.deepEqual(links(desktop + actions).map(link => link.href).sort(), links(mobile).map(link => link.href).sort());
+  assert.deepEqual(links(desktop), links(mobile).slice(0, 6));
+});
+
 test("new customers have assisted access steps without an implied activation or checkout", () => {
   const gettingStarted = text(section("get-started"));
   for (const phrase of [

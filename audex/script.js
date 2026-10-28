@@ -1,6 +1,7 @@
 const menuButton = document.querySelector(".menu-toggle");
 const mobileNav = document.querySelector("#mobile-nav");
 const mobileQuery = window.matchMedia("(max-width: 700px)");
+const compactNavigationQuery = window.matchMedia("(max-width: 1100px)");
 
 function closeMenu() {
   mobileNav.hidden = true;
@@ -27,8 +28,10 @@ document.addEventListener("keydown", (event) => {
 });
 
 mobileQuery.addEventListener("change", () => {
-  if (!mobileQuery.matches) closeMenu();
   updateTabOrientation();
+});
+compactNavigationQuery.addEventListener("change", () => {
+  if (!compactNavigationQuery.matches) closeMenu();
 });
 
 const tabList = document.querySelector(".experience-tabs");
