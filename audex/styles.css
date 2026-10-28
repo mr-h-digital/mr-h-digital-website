@@ -75,6 +75,9 @@ h3 { letter-spacing: -.035em; line-height: 1.3; }
 .pricing-card-featured { border: 2px solid var(--teal); }
 .pricing-detail, .pricing-terms { font-size: .85rem; color: var(--muted); }
 .pricing-terms { display: grid; gap: 14px; margin-top: 26px; }
+.access-caption { max-width: 455px; color: var(--muted); font-size: 12px; }
+.access-caption .text-link { font-size: inherit; padding-block: 4px; }
+.role-grid .pricing-detail { margin-top: auto; }
 @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
 
 .hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center; min-height: 735px; padding-top: 38px; padding-bottom: 55px; }
