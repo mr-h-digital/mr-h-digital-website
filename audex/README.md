@@ -22,6 +22,8 @@ The working application remains separate at `https://audex.mrhdigital.co.za/`. T
 
 ## Maintaining product accuracy
 
+Position AudEx as independent Mr. H Digital software for healthcare and senior living, serving facility operators, housekeeping managers, independent auditors and cleaning contractors. It is not restricted to a single customer's employees. WPC labels identify existing methodology provenance, not product ownership or an independently validated industry standard. Do not remove source attribution or imply reuse permission/clinical suitability has been established by rebranding. Individual accounts remain separate; do not market contractor/team oversight features that have not been implemented.
+
 Features were checked against `audex-web/README.md`, `shared/template.json`, the scoring implementation and the app branding. Keep this site's claims aligned with future app changes. In particular:
 
 - Load the app online once before offline use.

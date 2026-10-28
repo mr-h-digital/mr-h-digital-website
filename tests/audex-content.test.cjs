@@ -59,3 +59,16 @@ test("preview and checklist claims remain clearly bounded", () => {
   assert.match(html, /not a live audit or compliance assessment/);
   assert.doesNotMatch(html, /"(?:offers|aggregateRating)"\s*:/);
 });
+
+test("independent positioning retains methodology provenance without promising team features", () => {
+  const content = text(html);
+  for (const phrase of [
+    "Independent software for healthcare and senior living",
+    "facility operators, housekeeping managers, independent auditors and cleaning contractors",
+    "You do not need to work for WPC",
+    "WPC labels in the app identify the existing checklist or scoring methodology",
+    "not the product's ownership or a universal industry standard",
+    "cross-account reporting are not included",
+  ]) assert.ok(content.includes(phrase), phrase);
+  assert.match(html, /<title>AudEx \| Housekeeping audits for healthcare and senior living<\/title>/);
+});
