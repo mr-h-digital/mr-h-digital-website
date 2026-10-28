@@ -17,6 +17,14 @@ test("internal navigation targets exist and identifiers are unique", () => {
   for (const [, target] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(target), `Missing #${target}`);
 });
 
+test("desktop, mobile and footer navigation link directly to the contact section", () => {
+  for (const label of ["Main navigation", "Mobile navigation", "Footer navigation"]) {
+    const nav = html.match(new RegExp(`<nav\\b[^>]*aria-label="${label}"[^>]*>([\\s\\S]*?)</nav>`));
+    assert.ok(nav, `Missing ${label}`);
+    assert.match(nav[1], /<a href="#contact">Contact<\/a>/);
+  }
+});
+
 test("new customers have assisted access steps without an implied activation or checkout", () => {
   const gettingStarted = text(section("get-started"));
   for (const phrase of [
