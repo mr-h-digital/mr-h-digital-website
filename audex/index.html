@@ -224,9 +224,35 @@
 
     <section class="contact-section container" id="contact">
       <div class="contact-decoration" aria-hidden="true"><img src="assets/audex-mark.webp" width="292" height="240" alt=""></div>
-      <div class="contact-copy"><p class="eyebrow">BETTER STANDARDS START WITH A CONVERSATION.</p><h2>Bring a little<br><span class="serif">excellence</span> to the everyday.</h2><p>Request access or arrange a walkthrough with the people who built AudEx. Tell us your facility types and number of sites; we will confirm availability and next steps.</p><div class="button-row"><a class="button button-amber" href="mailto:info@mrhdigital.co.za?subject=AudEx%20access%20request">Request access by email <svg class="icon"><use href="#i-arrow"/></svg></a><a class="contact-whatsapp" href="https://wa.me/27766871671?text=Hi%20Mr.%20H%20Digital%2C%20I%27d%20like%20to%20request%20AudEx%20access%20and%20confirm%20availability." target="_blank" rel="noopener noreferrer">Request access on WhatsApp <span aria-hidden="true">&#8599;</span></a></div><span class="contact-note">An enquiry only, not account activation or payment. Do not send passwords, patient information or sensitive audit evidence.</span></div>
+      <div class="contact-layout">
+        <div class="contact-copy"><p class="eyebrow">LET'S FIND THE RIGHT FIT.</p><h2>Your next audit starts with a <span class="serif">conversation.</span></h2><p>Tell us about your facilities and what you need. We will help you understand AudEx, confirm availability and explain the next steps.</p>
+          <div class="contact-methods"><a href="mailto:info@mrhdigital.co.za?subject=AudEx%20access%20request"><strong>Request access by email</strong><span>info@mrhdigital.co.za &#8599;</span></a><a href="https://wa.me/27845414102?text=Hi%20Mr.%20H%20Digital%2C%20I%27d%20like%20to%20request%20AudEx%20access%20and%20confirm%20availability." target="_blank" rel="noopener noreferrer"><strong>Request access on WhatsApp</strong><span>+27 84 541 4102 &#8599;</span></a></div>
+          <span class="contact-note">An enquiry only, not account activation or payment. Do not send passwords, patient information or sensitive audit evidence.</span>
+        </div>
+        <form class="enquiry-form" id="audex-contact-form" action="https://audex-api.mrhdigital.co.za/api/contact" method="post">
+          <h3>How can we help?</h3>
+          <p>Required fields are marked *. We respond using the email address you provide.</p>
+          <div class="enquiry-fields">
+            <label>Your name *<input name="name" autocomplete="name" required maxlength="100"></label>
+            <label>Email address *<input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+            <label class="enquiry-wide">I would like to *<select name="type" required><option value="ACCESS">Request access</option><option value="WALKTHROUGH">Book a walkthrough</option><option value="QUESTION">Ask a question</option></select></label>
+            <label>Organisation / business<input name="organisation" autocomplete="organization" maxlength="160"></label>
+            <label>Phone / WhatsApp (optional)<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+            <label>Facility type<select name="facilityType"><option value="">Not specified</option><option value="HOSPITAL">Hospital</option><option value="CLINIC">Clinic</option><option value="RETIREMENT_VILLAGE">Retirement village</option><option value="MIXED">Multiple types</option><option value="OTHER">Other</option></select></label>
+            <label>Number of sites (optional)<input name="sites" type="number" min="1" max="10000" inputmode="numeric"></label>
+            <label class="enquiry-wide">Your message *<textarea name="message" rows="5" required maxlength="3000" aria-describedby="enquiry-privacy" placeholder="Tell us what you need, without sensitive audit or patient details."></textarea></label>
+          </div>
+          <div class="enquiry-trap" aria-hidden="true"><label>Leave this field empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <p id="enquiry-privacy">Your details and message are sent to Mr. H Digital's enquiry inbox to respond to this request. This form does not subscribe you to marketing. Email and WhatsApp use their respective service providers; share only the information needed for your enquiry.</p>
+          <label class="enquiry-consent"><input name="consent" type="checkbox" required> I agree that Mr. H Digital may use these details to respond to my enquiry. *</label>
+          <button type="submit" class="button" disabled>Send enquiry</button>
+          <p id="enquiry-status" role="status" aria-live="polite" tabindex="-1"></p>
+          <noscript><p>This form needs JavaScript. Please use the email or WhatsApp links alongside it.</p></noscript>
+        </form>
+      </div>
     </section>
   </main>
+  <a class="whatsapp-float" href="https://wa.me/27845414102?text=Hi%20Mr.%20H%20Digital%2C%20I%27d%20like%20to%20ask%20about%20AudEx." target="_blank" rel="noopener noreferrer" aria-label="Enquire about AudEx on WhatsApp (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.6Z"/><path d="M9 8c0 3 2 5 5 6l1-2-2-1-1 1-2-2 1-1-1-2Z"/></svg><span>WhatsApp</span></a>
 
   <footer class="site-footer container"><div class="footer-top"><a class="brand" href="#top" aria-label="AudEx home"><img src="assets/audex-mark.webp" width="44" height="36" alt=""><span>AudEx<small>AUDIT EXCELLENCE</small></span></a><p>Thoughtfully built. Purposefully simple.</p><a class="footer-maker" href="https://www.mrhdigital.co.za/"><img src="assets/mrh-digital-badge.webp" width="42" height="42" alt="">Designed &amp; developed by <strong>Mr. H Digital &#8599;</strong></a></div><div class="footer-bottom"><span>&copy; <span id="year">2026</span> Mr. H Digital. AudEx / Audit Excellence.</span><nav aria-label="Footer navigation"><a href="#features">Product</a><a href="#access">Access &amp; roles</a><a href="#get-started">Request access</a><a href="#questions">FAQs</a><a href="https://audex.mrhdigital.co.za/">Sign in &#8599;</a></nav><span>Made in South Africa.</span></div></footer>
 </body>

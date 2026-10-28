@@ -16,7 +16,7 @@ The working application remains separate at `https://audex.mrhdigital.co.za/`. T
 - Purpose-built HTML/CSS interface models are illustrations, **not screenshots**. All displayed sites, scores and dashboard figures are labelled sample data. Do not represent these as customer evidence.
 - The three-step product explorer supports mouse, touch and keyboard, with arrow keys, Home and End. Its mini checklist is an in-memory demonstration only: it never stores or sends responses and does not calculate a compliance result.
 - FAQs use native disclosure elements and work without JavaScript. Core product content, contact links and the desktop navigation also remain available without JavaScript.
-- Contact buttons open an email draft or WhatsApp using the main website's existing contact details. No lead form, analytics, cookies or backend has been added.
+- Contact links open email or WhatsApp at +27 84 541 4102. The AudEx enquiry form sends JSON to `https://audex-api.mrhdigital.co.za/api/contact` using the API's SMTP service; it never embeds mail credentials or uses a third-party form processor. No analytics, marketing subscription or tracking cookies are added. The social handle is not linked without a verified platform URL.
 - Google Fonts supplies DM Sans and Manrope with system fallbacks. The site remains usable if those requests fail.
 - Motion honours the device's reduced-motion setting.
 
@@ -42,3 +42,9 @@ Features were checked against `audex-web/README.md`, `shared/template.json`, the
 Run `node --test tests\audex-content.test.cjs` from the parent directory for access-copy, role-boundary, navigation and enquiry-link regression checks. Also inspect desktop/mobile layouts, the preview, menu and expanded FAQs after content changes.
 
 Keep the canonical URL, structured data, social metadata and parent sitemap consistent if the deployment address changes. `assets/social-preview.png` is the 1200 x 630 sharing image; PNG is intentional for broad social-crawler compatibility. Other brand artwork uses the app's existing WebP exports, except install/favicon PNGs.
+
+### Contact form deployment
+
+Enable the API endpoint with `AUDEX_CONTACT_ENABLED=true`, configured SMTP and a verified `AUDEX_MAIL_FROM`; allow the website origin in `AUDEX_ALLOWED_ORIGINS` without removing the app origin. Follow the API README's public-enquiry instructions, including external rate/body limits and privacy/retention responsibilities. Never commit SMTP secrets. The API deliberately returns an error rather than logging enquiries as if delivered when SMTP is unavailable.
+
+Deploy the API first and confirm an enquiry arrives at `info@mrhdigital.co.za` with the visitor's email as Reply-To. Then publish this static directory. The form clears only after a successful JSON acceptance; failures, timeouts, disabled configuration and rate limits keep entries and offer email/WhatsApp alternatives. SMTP acceptance does not guarantee inbox delivery, and retry after an ambiguous failure may duplicate mail. Without JavaScript, the submit action remains disabled and direct contact links are available. The floating WhatsApp link hides while the contact section is visible so it does not obscure form controls.

@@ -72,3 +72,19 @@ test("independent positioning retains methodology provenance without promising t
   ]) assert.ok(content.includes(phrase), phrase);
   assert.match(html, /<title>AudEx \| Housekeeping audits for healthcare and senior living<\/title>/);
 });
+
+test("enquiries have accessible required fields, direct fallback and one WhatsApp destination", () => {
+  const contact = section("contact");
+  assert.match(contact, /action="https:\/\/audex-api\.mrhdigital\.co\.za\/api\/contact"/);
+  for (const name of ["name", "email", "type", "message", "consent"]) {
+    assert.match(contact, new RegExp(`<(?:input|select|textarea)\\b[^>]*name="${name}"[^>]*required`));
+  }
+  assert.match(contact, /<button[^>]*type="submit"[^>]*disabled/);
+  assert.match(contact, /<noscript>/);
+  assert.match(contact, /not subscribe you to marketing/);
+  assert.match(contact, /not account activation or payment/);
+  assert.match(contact, /role="status" aria-live="polite"/);
+  const whatsapp = [...html.matchAll(/href="https:\/\/wa\.me\/([^?"]+)/g)];
+  assert.equal(whatsapp.length, 2);
+  for (const [, number] of whatsapp) assert.equal(number, "27845414102");
+});

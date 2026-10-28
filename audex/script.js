@@ -143,3 +143,56 @@ nextButton.addEventListener("click", () => {
 });
 
 document.getElementById("year").textContent = String(new Date().getFullYear());
+
+const enquiryForm = document.getElementById("audex-contact-form");
+const enquiryStatus = document.getElementById("enquiry-status");
+const enquirySubmit = enquiryForm.querySelector('button[type="submit"]');
+enquirySubmit.disabled = false;
+if ("IntersectionObserver" in window) {
+  const floatingWhatsApp = document.querySelector(".whatsapp-float");
+  const contactVisibility = new IntersectionObserver((entries) => {
+    floatingWhatsApp.hidden = entries[0].isIntersecting;
+  });
+  contactVisibility.observe(document.getElementById("contact"));
+}
+let sendingEnquiry = false;
+enquiryForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (sendingEnquiry || !enquiryForm.reportValidity()) return;
+  const fields = new FormData(enquiryForm);
+  const value = (key) => String(fields.get(key) || "").trim();
+  const body = Object.fromEntries(["name", "email", "type", "organisation", "facilityType", "phone", "message", "website"].map(key => [key, value(key)]));
+  body.sites = value("sites") ? Number(value("sites")) : null;
+  body.consent = fields.get("consent") === "on";
+  sendingEnquiry = true;
+  enquirySubmit.disabled = true;
+  enquirySubmit.textContent = "Sending enquiry...";
+  enquiryStatus.dataset.error = "false";
+  enquiryStatus.textContent = "Submitting your enquiry...";
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 20000);
+  try {
+    const response = await fetch(enquiryForm.action, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body), signal: controller.signal, credentials: "omit",
+    });
+    if (!response.ok) throw new Error(response.status === 429
+      ? "The enquiry limit has been reached. Please try later, email info@mrhdigital.co.za or use WhatsApp."
+      : "We could not confirm submission. Please retry, email info@mrhdigital.co.za or use WhatsApp.");
+    const result = await response.json();
+    if (result?.status !== "accepted" || typeof result.message !== "string" || !result.message.trim()) throw new Error("The email service did not confirm acceptance. Please contact us directly.");
+    enquiryStatus.textContent = result.message;
+    enquiryForm.reset();
+  } catch (error) {
+    enquiryStatus.dataset.error = "true";
+    enquiryStatus.textContent = (error instanceof Error && error.name !== "AbortError" && !(error instanceof TypeError) && !(error instanceof SyntaxError)
+      ? error.message : "We could not confirm submission. Check your connection, retry or contact us directly.")
+      + " Your entries have been kept. Retrying may send a duplicate if the earlier submission was accepted.";
+  } finally {
+    clearTimeout(timeout);
+    sendingEnquiry = false;
+    enquirySubmit.disabled = false;
+    enquirySubmit.textContent = "Send enquiry";
+    enquiryStatus.focus({ preventScroll: true });
+  }
+});
